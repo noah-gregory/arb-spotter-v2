@@ -27,7 +27,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "node backend/server.js",
+    "start": "react-scripts start",
     "postinstall": "patch-package",
     "build": "react-scripts build",
     "test": "react-scripts test",
