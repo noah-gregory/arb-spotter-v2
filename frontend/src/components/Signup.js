@@ -29,6 +29,7 @@ function Signup()
     {
         event.preventDefault();
 
+        // Create JSON object for signup post request
         let obj = {firstname:signupFirstname.value,lastname:signupLastname.value,email:signupEmail.value,login:signupLogin.value,password:signupPassword.value};
         let js = JSON.stringify(obj);
 
