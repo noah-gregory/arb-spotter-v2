@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Switch} from "react-router-dom";
 import axios from 'axios';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
