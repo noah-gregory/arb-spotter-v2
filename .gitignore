@@ -4,8 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
-/backend/node_modules
-/backend/.env
+/frontend/node_modules
+/frontend/.env
 
 
 # testing
