@@ -29,7 +29,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start && NPM_CONFIG_PRODUCTION=false && npm install --prefix backend && node ./backend/server.js",
+    "start": "NPM_CONFIG_PRODUCTION=false && npm install --prefix backend && node ./backend/server.js && react-scripts start",
     "postinstall": "patch-package",
     "build": "react-scripts build",
     "test": "react-scripts test",
