@@ -30,7 +30,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "postinstall": "patch-package",
+    "postinstall": "patch-package && NPM_CONFIG_PRODUCTION=false && npm install --prefix backend && node ./backend/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
