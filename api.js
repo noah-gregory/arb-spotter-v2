@@ -57,11 +57,12 @@ app.post('/api/login', async (req, res, next) =>
 // outgoing: id, firstName, lastName, error
 var error = '';
 const { login, password } = req.body;
+console.log(login);
+console.log(password);
 // const db = client.db();
 // const results = await
 // db.collection('Users').find({Login:login,Password:password}).toArray();
 const results = await User.find({'Login' : login}).select("-_id");
-
 var id = -1;
 var fn = '';
 var ln = '';
@@ -74,11 +75,12 @@ console.log("there was a hit");
 fn = results[0].FirstName;
 ln = results[0].LastName;
 
-var str = JSON.stringify(results);
-// console.log(str);
+// var str = JSON.stringify(results[0]);
 try
 {
     const token = require("./createJWT.js");
+    console.log(fn);
+    console.log(ln);
     ret = token.createToken(fn,ln);
 }
 catch(e)

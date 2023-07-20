@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import jwt_decode from 'jwt-decode';
 function Login()
 {
 var bp = require('./Path.js');
@@ -36,13 +37,15 @@ else
 console.log("before jwt");
 storage.storeToken(res);
 
-var jwt = require('jsonwebtoken');
+// var jwt = require("jwt-decode");
 console.log("is jwt working?");
-var ud = jwt.decode(storage.retrieveToken(),{complete:true});
+var ud = jwt_decode(storage.retrieveToken());
 
-var firstName = ud.payload.firstName;
-var lastName = ud.payload.lastName;
-var user = {firstName:firstName,lastName:lastName}
+var firstName = ud.firstName;
+var lastName = ud.lastName;
+console.log(firstName);
+console.log(lastName);
+var user = {firstName:firstName,lastName:lastName};
 localStorage.setItem('user_data', JSON.stringify(user));
 window.location.href = '/signup';
 }
