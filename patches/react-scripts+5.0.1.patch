@@ -28,6 +28,19 @@ new mode 100755
 diff --git a/node_modules/react-scripts/config/webpack.config.js b/node_modules/react-scripts/config/webpack.config.js
 old mode 100644
 new mode 100755
+index e465d8e..431fef6
+--- a/node_modules/react-scripts/config/webpack.config.js
++++ b/node_modules/react-scripts/config/webpack.config.js
+@@ -310,6 +310,9 @@ module.exports = function (webpackEnv) {
+       modules: ['node_modules', paths.appNodeModules].concat(
+         modules.additionalModulePaths || []
+       ),
++      fallback: {
++        "crypto": require.resolve("crypto-browserify")
++      }, 
+       // These are the reasonable defaults supported by the Node ecosystem.
+       // We also include JSX as a common component filename extension to support
+       // some tools, although we do not recommend using it, see:
 diff --git a/node_modules/react-scripts/config/webpack/persistentCache/createEnvironmentHash.js b/node_modules/react-scripts/config/webpack/persistentCache/createEnvironmentHash.js
 old mode 100644
 new mode 100755
