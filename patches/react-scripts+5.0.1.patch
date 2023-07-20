@@ -1,0 +1,66 @@
+diff --git a/node_modules/react-scripts/LICENSE b/node_modules/react-scripts/LICENSE
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-scripts/README.md b/node_modules/react-scripts/README.md
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-scripts/config/env.js b/node_modules/react-scripts/config/env.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-scripts/config/getHttpsConfig.js b/node_modules/react-scripts/config/getHttpsConfig.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-scripts/config/jest/babelTransform.js b/node_modules/react-scripts/config/jest/babelTransform.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-scripts/config/jest/cssTransform.js b/node_modules/react-scripts/config/jest/cssTransform.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-scripts/config/jest/fileTransform.js b/node_modules/react-scripts/config/jest/fileTransform.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-scripts/config/modules.js b/node_modules/react-scripts/config/modules.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-scripts/config/paths.js b/node_modules/react-scripts/config/paths.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-scripts/config/webpack.config.js b/node_modules/react-scripts/config/webpack.config.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-scripts/config/webpack/persistentCache/createEnvironmentHash.js b/node_modules/react-scripts/config/webpack/persistentCache/createEnvironmentHash.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-scripts/config/webpackDevServer.config.js b/node_modules/react-scripts/config/webpackDevServer.config.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-scripts/lib/react-app.d.ts b/node_modules/react-scripts/lib/react-app.d.ts
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-scripts/scripts/build.js b/node_modules/react-scripts/scripts/build.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-scripts/scripts/eject.js b/node_modules/react-scripts/scripts/eject.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-scripts/scripts/init.js b/node_modules/react-scripts/scripts/init.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-scripts/scripts/start.js b/node_modules/react-scripts/scripts/start.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-scripts/scripts/test.js b/node_modules/react-scripts/scripts/test.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-scripts/scripts/utils/createJestConfig.js b/node_modules/react-scripts/scripts/utils/createJestConfig.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-scripts/scripts/utils/verifyTypeScriptSetup.js b/node_modules/react-scripts/scripts/utils/verifyTypeScriptSetup.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-scripts/template-typescript/README.md b/node_modules/react-scripts/template-typescript/README.md
+old mode 100644
+new mode 100755
+diff --git a/node_modules/react-scripts/template/README.md b/node_modules/react-scripts/template/README.md
+old mode 100644
+new mode 100755
