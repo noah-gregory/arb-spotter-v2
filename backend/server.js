@@ -7,6 +7,8 @@ app.set('port', (process.env.PORT || 5000));
 const app = express();
 require('./database');
 
+console.log(port);
+
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -22,7 +24,7 @@ const users = require('./api/users');
 app.use('./api/users', users);
 
 if (process.env.NODE_ENV === 'production'){
-    app.use(express.static(path.join(__dirname, '..', 'build')));
+    app.use(express.static('../build'));
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, '..', 'build', 'index.html'));
     });
@@ -31,7 +33,6 @@ if (process.env.NODE_ENV === 'production'){
     });
 }
 
-console.log(port);
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
 });
