@@ -29,9 +29,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start && NPM_CONFIG_PRODUCTION=false && npm install --prefix backend && node ./backend/server.js",
     "postinstall": "patch-package",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && npm install --prefix backend && node ./backend/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
