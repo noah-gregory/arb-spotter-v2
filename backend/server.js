@@ -15,10 +15,10 @@ app.use(cors());
 const mongoose = require('mongoose');
 
 require('dotenv').config();
-const connection = process.env.MONGODB_URI;
-mongoose.connect(connection,{ useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
-    .then(() => console.log("Database Connected Successfully"))
-    .catch(err => console.log(err));
+const url = process.env.MONGODB_URI;
+mongoose.connect(url)
+.then(() => console.log("Mongo DB connected"))
+.catch(err => console.log(err));
 
 
 // API
