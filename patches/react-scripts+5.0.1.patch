@@ -28,14 +28,15 @@ new mode 100755
 diff --git a/node_modules/react-scripts/config/webpack.config.js b/node_modules/react-scripts/config/webpack.config.js
 old mode 100644
 new mode 100755
-index e465d8e..431fef6
+index e465d8e..13d2731
 --- a/node_modules/react-scripts/config/webpack.config.js
 +++ b/node_modules/react-scripts/config/webpack.config.js
-@@ -310,6 +310,9 @@ module.exports = function (webpackEnv) {
+@@ -310,6 +310,10 @@ module.exports = function (webpackEnv) {
        modules: ['node_modules', paths.appNodeModules].concat(
          modules.additionalModulePaths || []
        ),
 +      fallback: {
++        "stream": require.resolve("stream-browserify"),
 +        "crypto": require.resolve("crypto-browserify")
 +      }, 
        // These are the reasonable defaults supported by the Node ecosystem.
