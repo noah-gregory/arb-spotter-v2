@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path')
 const app = express();
+const port = process.env.PORT || 5000;
+app.set('port', (process.env.PORT || 5000));
 require('./database');
 
 app.use(bodyParser.json());
@@ -29,9 +31,7 @@ if (process.env.NODE_ENV === 'production'){
     });
 }
 
-
-const port = process.env.PORT || 5000;
-app.set('port', (process.env.PORT || 5000));
+console.log(port);
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
 });
