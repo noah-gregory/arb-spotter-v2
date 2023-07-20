@@ -12,7 +12,6 @@ function App() {
 				<Switch>
 					<Route path="/" index element={<LoginPage />} />
 					<Route path="/login" index element={<LoginPage />} />
-					<Route path="/home" index element={<HomePage />} />
 					<Route path="/signup" index element={<SignupPage />} />
 				</Switch>
 			</Routes>
