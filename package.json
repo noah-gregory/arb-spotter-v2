@@ -22,6 +22,7 @@
     "react-jwt": "^1.2.0",
     "react-router-dom": "^6.14.2",
     "react-scripts": "^5.0.1",
+    "typescript": "^5.1.6",
     "util": "^0.12.5",
     "web-vitals": "^2.1.4"
   },
