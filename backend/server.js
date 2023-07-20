@@ -7,8 +7,6 @@ const app = express();
 // require('./database');
 app.set('port', (process.env.PORT || 5000));
 
-console.log(port);
-
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -16,6 +14,7 @@ const mongoose = require('mongoose');
 
 require('dotenv').config();
 const url = process.env.MONGODB_URI;
+console.log(url);
 mongoose.connect(url)
 .then(() => console.log("Mongo DB connected"))
 .catch(err => console.log(err));
