@@ -8,6 +8,13 @@ require('./database');
 app.use(bodyParser.json());
 app.use(cors());
 
+const mongoose = require('mongoose');
+require('dotenv').config();
+const connection = process.env.MONGODB_URI;
+mongoose.connect(connection,{ useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false})
+    .then(() => console.log("Database Connected Successfully"))
+    .catch(err => console.log(err));
+
 // API
 const users = require('./api/users');
 app.use('./api/users', users);
@@ -24,6 +31,7 @@ if (process.env.NODE_ENV === 'production'){
 
 
 const port = process.env.PORT || 5000;
+app.set('port', (process.env.PORT || 5000));
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
 });
