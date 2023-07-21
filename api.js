@@ -8,6 +8,9 @@ exports.setApp = function ( app, client )
 const User = require("./models/user.js");
 //load card model
 const Card = require("./models/cards.js");
+//load post model
+const Post = require("./models/post.js");
+    
 app.post('/api/addcard', async (req, res, next) =>
 {
 // incoming: userId, colo
@@ -163,9 +166,33 @@ app.post('/api/signUp', async (req,res,next) =>
     console.log(ret);
     res.status(200).json(ret);    
 
-   
+});
+    
+app.post('/api/uploadPost', async (req,res,next) =>
+{
+    // incoming: poster, xCoord, yCoord, tags, dateCreated
+    // outgoing: json(savedPost)
 
+    // NOTE: xCoord AND yCoord HAVE BEEN MANUALLY SET TO 0 FOR NOW
 
+    const { poster, xCoord, yCoord, tags, dateCreated} = req.body;
+    var newPost = new Post({poster: poster, 
+                            xCoord: 0, 
+                            yCoord: 0, 
+                            tags: tags, 
+                            dateCreated: dateCreated});
+
+    try
+    {
+        newPost.save().then(savedPost => {
+            savedPost = newPost;
+        });
+        res.status(200).json(savedPost); // uploaded post successfully
+    }
+    catch(e)
+    {
+        res.status(400).json({message: "Error uploading post"});
+    }
 });
 }
 
