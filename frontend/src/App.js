@@ -10,9 +10,12 @@ function App() {
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route path="/" index element={<LoginPage />} />
-				<Route path="/login" index element={<LoginPage />} />
-				<Route path="/signup" index element={<SignupPage />} />
+				<Route path="/" index element={<main className="App"><LoginPage /></main>} />
+				 
+				<Route path="/login" index element={<main className="App"><LoginPage /></main>} />
+				 
+				<Route path="/signup" index element={<main className="App"><SignupPage /></main>} />
+				
 			</Routes>
 		</BrowserRouter>
 	);

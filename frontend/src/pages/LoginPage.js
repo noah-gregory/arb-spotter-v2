@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PageTitle from '../components/PageTitle';
+// import PageTitle from '../components/PageTitle';
 import Login from '../components/Login';
 
 const LoginPage = () =>
@@ -8,7 +8,7 @@ const LoginPage = () =>
     console.log("LoginPage");
     return(
       <div>
-        <PageTitle />
+        {/* <PageTitle /> */}
         <Login />
       </div>
     );

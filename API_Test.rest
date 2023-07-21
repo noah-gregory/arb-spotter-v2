@@ -1,0 +1,8 @@
+### This is a Post Test
+POST http://localhost:5000/api/login
+Content-Type: application/json
+
+{
+   "login" : "fb",
+   "password" : "123"
+}

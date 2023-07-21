@@ -1,53 +1,60 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-exports.createToken = function ( fn, ln)
-{
-return _createToken( fn, ln);
-}
-_createToken = function ( fn, ln )
-{
-try
-{
 
-const user = {firstName:fn,lastName:ln};
-const accessToken = jwt.sign( user, process.env.ACCESS_TOKEN_SECRET);
-// In order to exoire with a value other than the default, use the
-// following
-/*
-const accessToken= jwt.sign(user,process.env.ACCESS_TOKEN_SECRET,
-{ expiresIn: '30m'} );
-'24h'
-'365d'
-*/
-var ret = {accessToken:accessToken,fn:fn,ln:ln};
-}
-catch(e)
+exports.createToken = function ( fn, ln, id)
 {
-var ret = {error:e.message};
+    return _createToken( fn, ln, id);
 }
-return ret;
+
+_createToken = function ( fn, ln , id)
+{
+    try
+    {
+
+    const user = {firstName:fn,lastName:ln,id:id};
+    const accessToken = jwt.sign( user, process.env.ACCESS_TOKEN_SECRET);
+    // In order to exoire with a value other than the default, use the
+    // following
+    /*
+    const accessToken= jwt.sign(user,process.env.ACCESS_TOKEN_SECRET,
+    { expiresIn: '30m'} );
+    '24h'
+    '365d'
+    */
+    // var ret = {accessToken:accessToken,fn:fn,ln:ln,id:id};
+    var ret = {accessToken:accessToken};
+
+    }
+    catch(e)
+    {
+        var ret = {error:e.message};
+    }
+    return ret;
 }
+
 exports.isExpired = function( token )
 {
-var isError = jwt.verify( token, process.env.ACCESS_TOKEN_SECRET,
-(err, verifiedJwt) =>
-{
-if( err )
-{
-return true;
+    var isError = jwt.verify( token, process.env.ACCESS_TOKEN_SECRET,
+    (err, verifiedJwt) =>
+    {
+        if( err )
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    });
+    return isError;
 }
-else
-{
-return false;
-}
-});
-return isError;
-}
+
 exports.refresh = function( token )
 {
-let ud = jwt.decode(token,{complete:true});
+    let ud = jwt.decode(token,{complete:true});
 
-let firstName = ud.payload.firstName;
-let lastName = ud.payload.lastName;
-return _createToken( firstName, lastName );
+    let firstName = ud.payload.firstName;
+    let lastName = ud.payload.lastName;
+    let Id = ud.payload._id;
+    return _createToken( firstName, lastName ,Id);
 }
