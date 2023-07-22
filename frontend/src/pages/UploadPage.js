@@ -5,7 +5,7 @@ const UploadPage = () =>
 {
     console.log("UploadPage");
     return(
-      <div>
+      <div >
         {/* <PageTitle /> */}
         <Upload />
       </div>

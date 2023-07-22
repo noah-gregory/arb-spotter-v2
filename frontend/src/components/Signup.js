@@ -162,7 +162,7 @@ const SignupPage = () => {
 
     return (
             (
-                <section>
+                <section className="login-section">
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                     <h1>Register</h1>
                     <form onSubmit={doSignup}>
@@ -281,7 +281,7 @@ const SignupPage = () => {
                             Allowed special characters: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
                         </p>
 
-                        <button disabled={!validName || !validPwd || !validEmail || !validFname ? true : false}>Sign Up</button>
+                        <button className="login-button" disabled={!validName || !validPwd || !validEmail || !validFname ? true : false}>Sign Up</button>
                     </form>
                     <p>
                         Already registered?<br />

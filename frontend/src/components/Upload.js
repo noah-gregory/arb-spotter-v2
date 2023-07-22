@@ -6,10 +6,6 @@
 const UploadPage = () => {
     return(
         (
-            <body className='Back-Drop'>
-                <div className='Banner'>
-        
-                </div>
                 <section className='Upload-Holder'>
                     <section className='Title-Box'> 
                         <input className='Title-Text' id='TitleText' type='text' placeholder='Insert Title' ></input>
@@ -21,7 +17,6 @@ const UploadPage = () => {
                 <input className='Caption-Text' id='CaptionText' type='text'placeholder='Insert Caption'></input>
                 <button type="button"className='Tag-Button'>Add Tag</button>
                 </section>
-            </body>
         )
     )
 }
