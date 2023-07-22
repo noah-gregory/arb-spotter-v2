@@ -163,21 +163,55 @@ exports.setApp = function ( app, client )
         // outcoming: FirstName, LastName
 
         var error = '';
-        const { firstname, lastname, email, login, password } = req.body;
-        var newUser = new User({FirstName: firstname, LastName: lastname, Email: email, Login: login, Password: password});
+        var newUserSaved;
+        // const { firstname, lastname, email, login, password } = req.body;
+        // var newUser = new User({FirstName: firstname, LastName: lastname, Email: email, Login: login, Password: password});
         
-        try
-        {
-            newUser.save().then(savedUser => {
-                savedUser = newUser;
-            });
+        var newUser =new User({
+            FirstName: req.body.FirstName,
+            LastName: req.body.LastName,
+            Email: req.body.Email,
+            Login: req.body.Login,
+            Password: req.body.Password
+        })
+
+
+            // newUser.save().then(savedUser => {
+            //     savedUser = newUser;
+            // });
+
+             const num = await User.findOne({'Login' : newUser.Login})
+             if (num)
+             {
+                
+                console.log("login exists");
+                return res.status(400).send({error: 'Login already exists'});
+                
+             }
+             const num2 = await User.findOne({'Email' : newUser.Email})
+             if (num2)
+             {
+                console.log("email exists");
+                return res.status(400).send({error: 'Email already exists'});
+                
+             }
+            
+
+            const savedUser = await newUser.save(); 
+            try{
+                 newUserSaved = await User.find({'Login' : newUser.Login, 'Password' : newUser.Password});
+            }
+            catch(e)
+            {
+                console.log("Error finding user");        
+            }
+           
+            console.log(newUser.FirstName);
             const token = require("./createJWT.js");
-            ret = token.createToken(firstname, lastname);
-        }
-        catch(e)
-        {
-            ret = {error:e.message};
-        }
+            ret = token.createToken(req.body.FirstName, req.body.LastName, req.body.Email, req.body.Login, req.body.Password, newUserSaved[0]._id);
+            console.log("user has been added");
+        
+      
 
         console.log(ret);
 

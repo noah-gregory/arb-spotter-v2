@@ -5,6 +5,10 @@ exports.createToken = function ( fn, ln, id)
 {
     return _createToken( fn, ln, id);
 }
+exports.createToken = function ( fn, ln, email, username, password, id)
+{
+    return _createToken(fn, ln, email, username, password, id);
+}
 
 _createToken = function ( fn, ln , id)
 {
@@ -13,14 +17,25 @@ _createToken = function ( fn, ln , id)
 
     const user = {firstName:fn,lastName:ln,id:id};
     const accessToken = jwt.sign( user, process.env.ACCESS_TOKEN_SECRET);
-    // In order to exoire with a value other than the default, use the
-    // following
-    /*
-    const accessToken= jwt.sign(user,process.env.ACCESS_TOKEN_SECRET,
-    { expiresIn: '30m'} );
-    '24h'
-    '365d'
-    */
+  
+    // var ret = {accessToken:accessToken,fn:fn,ln:ln,id:id};
+    var ret = {accessToken:accessToken};
+
+    }
+    catch(e)
+    {
+        var ret = {error:e.message};
+    }
+    return ret;
+}
+_createToken = function ( fn, ln , email, username, password, id)
+{
+    try
+    {
+
+    const user = {firstName:fn,lastName:ln,email:email,username:username,password:password,id:id};
+    const accessToken = jwt.sign( user, process.env.ACCESS_TOKEN_SECRET);
+  
     // var ret = {accessToken:accessToken,fn:fn,ln:ln,id:id};
     var ret = {accessToken:accessToken};
 
