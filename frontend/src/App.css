@@ -42,23 +42,37 @@
   right: 0;
   top: 0;
   bottom: 0;
-  margin-top: 20px;
-  width: 558px;
-  height: 618px;
+  width: 26.875rem;
+  height: 29.875rem;
   flex-shrink: 0;
-  border-radius: 30px;
+  border-radius: 1.875rem;
   border: 1px solid #393E46;
   background: #F7F7F7;
   }
   .Title-Box{
   position: relative;
   align-items: center;
-  width: 558px;
-  height: 80px;
+  width: 26.875rem;
+  height: 4rem;
   flex-shrink: 0;
-  border-radius: 30px 30px 0px 0px;
+  border-radius: 1.875rem 1.875rem 0rem 0rem;
   border: 1px solid #393E46;
   background: #F2E7D5;
+  }
+  .upload-text{
+  display: flex;
+  width: 158.75px;
+  height: 15.3px;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #393E46;
+  text-align: center;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;  
   }
   .Title-Text{
   position: absolute;
@@ -69,16 +83,17 @@
   margin: auto;
   background: transparent;
   border: none;
+  outline: none;
   display: flex;
-  width: 480px;
-  height: 91px;
+  width: 20rem;
+  height: 5.6875rem;
   flex-direction: column;
   justify-content: center;
   flex-shrink: 0;
   color: #393E46;
   text-align: center;
   font-family: Inter;
-  font-size: 22px;
+  font-size: 1.375rem;
   font-style: italic;
   font-weight: 400;
   line-height: normal;
@@ -92,10 +107,10 @@
   margin: auto;
   margin-top: 5px;
   vertical-align: middle;
-  width: 400px;
-  height: 400px;
+  width: 20.625rem;
+  height: 20.625rem;
   flex-shrink: 0;
-  border-radius: 10px;
+  border-radius: 0.625rem;
   border: 1px solid #393E46;
   background: #F2E7D5;
   }
@@ -107,13 +122,14 @@
   bottom: 0;
   margin: auto;
   display: flex;
-  width: 254px;
-  height: 51px;
-  padding: 16.575px 47.625px 19.125px 47.625px;
+  width: 11.875rem;
+  height: 2.1875rem;
+  padding: 1.03594rem 2.97656rem 1.19531rem 2.97656rem;
+  cursor: pointer;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
-  border-radius: 10px;
+  border-radius: 0.625rem;
   border: 1px solid #393E46;
   background: #F7F7F7;
   }
@@ -126,59 +142,37 @@
   margin: auto;
   background: transparent;
   border: none;
+  outline: none;
   display: flex;
-  width: 400px;
-  height: 51px;
+  width: 20rem;
+  height: 2.6875rem;
   flex-direction: column;
   justify-content: center;
   flex-shrink: 0;
   color: #393E46;
   text-align: center;
   font-family: Inter;
-  font-size: 22px;
+  font-size: 1.375rem;
   font-style: italic;
   font-weight: 400;
   line-height: normal;
   }
   .Tag-Button{
   position: absolute;
+  cursor: pointer;
   left: 0;
   right: 1;
   top: 1;
   bottom: 0;
   margin: auto;
-  margin-bottom: 10px;
-  margin-left: 10px;
-  width: 88px;
-  height: 32px;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  width: 3.5rem;
+  height: 1.3rem;
   flex-shrink: 0;
   border-radius: 30px;
   border: 1px solid #393E46;
   background: #F2E7D5;
-  }
-  .Back-Drop{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: #6D9886;
-  background-size: cover;
-  background-position: center;
-  z-index: -1;
-  }
-  .Banner{
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 60;
-  width: 100%;
-  padding: 25px 100px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #d7e9f3d0;
-  z-index: 99;
-  background: #393E46;
   }
   .Image-Icon{
   position: relative;
@@ -188,15 +182,15 @@
   bottom: 0;
   margin: auto;
   display: flex;
-  width: 186px;
-  height: 208px;
+  width: 11.625rem;
+  height: 13rem;
   flex-direction: column;
   justify-content: center;
   flex-shrink: 0;
   color: #393E46;
   text-align: center;
   font-family: Font Awesome 5 Free;
-  font-size: 60px;
+  font-size: 2.75rem;
   font-style: normal;
   font-weight: 900;
   line-height: normal;
@@ -276,6 +270,7 @@ label,
 .login-button {
   color :black;
   background-color: #F2E7D5;
+  cursor: pointer;
   padding: 0.5rem;
 }
 
