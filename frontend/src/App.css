@@ -42,8 +42,9 @@
   right: 0;
   top: 0;
   bottom: 0;
-  width: 26.875rem;
-  height: 29.875rem;
+  margin-top: 2rem;
+  width: 21rem;
+  height: 25rem;
   flex-shrink: 0;
   border-radius: 1.875rem;
   border: 1px solid #393E46;
@@ -52,8 +53,8 @@
   .Title-Box{
   position: relative;
   align-items: center;
-  width: 26.875rem;
-  height: 4rem;
+  width: 21rem;
+  height: 2.4rem;
   flex-shrink: 0;
   border-radius: 1.875rem 1.875rem 0rem 0rem;
   border: 1px solid #393E46;
@@ -107,8 +108,8 @@
   margin: auto;
   margin-top: 5px;
   vertical-align: middle;
-  width: 20.625rem;
-  height: 20.625rem;
+  width: 16.125rem;
+  height: 16.125rem;
   flex-shrink: 0;
   border-radius: 0.625rem;
   border: 1px solid #393E46;
@@ -122,8 +123,8 @@
   bottom: 0;
   margin: auto;
   display: flex;
-  width: 11.875rem;
-  height: 2.1875rem;
+  width: 9.875rem;
+  height: 1.6875rem;
   padding: 1.03594rem 2.97656rem 1.19531rem 2.97656rem;
   cursor: pointer;
   justify-content: center;
@@ -140,26 +141,34 @@
   top: 1;
   bottom: 0;
   margin: auto;
+  margin-top: .7rem;
+  margin-bottom: 1.5rem;
   background: transparent;
   border: none;
   outline: none;
-  display: flex;
-  width: 20rem;
-  height: 2.6875rem;
+  display: block;
+  max-lines: 3;
+  overflow: hidden;
+  width: 15rem;
+  height: 2.1rem;
   flex-direction: column;
   justify-content: center;
   flex-shrink: 0;
   color: #393E46;
   text-align: center;
   font-family: Inter;
-  font-size: 1.375rem;
+  font-size: 1rem;
   font-style: italic;
   font-weight: 400;
-  line-height: normal;
+  line-height: .7rem;
+  }
+  .Caption-Text[contenteditable]:empty:focus::before,
+  .Caption-Text[contenteditable]:empty::before{
+  content: 'Put your Caption Here!';
   }
   .Tag-Button{
-  position: absolute;
-  cursor: pointer;
+  position: relative;
+  float: left;
   left: 0;
   right: 1;
   top: 1;
@@ -167,12 +176,36 @@
   margin: auto;
   margin-bottom: 1rem;
   margin-left: 1rem;
-  width: 3.5rem;
+  width: 3rem;
   height: 1.3rem;
   flex-shrink: 0;
   border-radius: 30px;
   border: 1px solid #393E46;
   background: #F2E7D5;
+  color: #393E46;
+  text-align: center;
+  font-family: Inter;
+  font-size: 0.675rem;
+  font-style: italic;
+  font-weight: 700;
+  }
+  .finalize-button{
+  position: absolute;
+  cursor: pointer;
+  left: 1;
+  right: 0;
+  top: 1;
+  bottom: 0;
+  margin: auto;
+  margin-bottom: .5rem;
+  margin-right: .5rem;
+  width: 4rem;
+  height: 2rem;
+  flex-shrink: 0;
+  border-radius: 30px;
+  border: 1px solid #393E46;
+  background: #393E46;
+  color: #F2E7D5;
   }
   .Image-Icon{
   position: relative;
@@ -182,8 +215,8 @@
   bottom: 0;
   margin: auto;
   display: flex;
-  width: 11.625rem;
-  height: 13rem;
+  width: 9.625rem;
+  height: 9rem;
   flex-direction: column;
   justify-content: center;
   flex-shrink: 0;
