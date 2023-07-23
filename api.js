@@ -7,6 +7,8 @@ exports.setApp = function ( app, client )
     const User = require("./models/user.js");
     //load card model
     const Card = require("./models/cards.js");
+    const Posts = require('./models/post.js');
+
 
     app.post('/api/addcard', async (req, res, next) =>
     {
@@ -86,7 +88,7 @@ exports.setApp = function ( app, client )
             ln = results[0].LastName;
             id = results[0]._id;
 
-            // var str = JSON.stringify(results[0]);
+            // var str =    .stringify(results[0]);
             try
             {
                 const token = require("./createJWT.js");
@@ -215,6 +217,28 @@ exports.setApp = function ( app, client )
 
         console.log(ret);
 
-        res.status(200).json(ret);    
+    res.status(200).json(ret);  
+           
     });
+
+    app.get('/api/returnLastest', async (req,res,next) =>
+    {
+        // returns an json of all posts' object _ids, sorted by the time theyre uploaded
+
+    try
+    {
+     var results = await Posts.find({"xCoord" : {$ne : null}}).sort({dateCreated : -1}).select('_id');
+     if(results)
+     {
+        console.log(JSON.stringify(results));
+     }   
+    }
+    catch(e)
+    {
+        console.log(e);
+        return res.status(400).send({error: 'Error fetching posts'});
+
+    }
+    res.status(200).json(results); 
+    })
 }

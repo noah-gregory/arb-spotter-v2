@@ -4,23 +4,28 @@ const Schema = mongoose.Schema;
 const postSchema = new Schema({
     poster: {
         type: String,
-        required: true
+        // required: true
     },
     xCoord: {
-        type: String,
-        required: true
+        type: Number,
+        // required: true
     },
     yCoord: {
         type: String,
-        required: true
+        // required: true
     },
     tags: {
         type: [String],
-        required: true
+        // required: true
     },
     dateCreated: {
         type: String,
-        required: true
+        // required: true
     },
-})
+    
+    
+},
+{ timestamps: {
+    createdAt: 'dateCreated'
+} })
 module.exports = mongoose.model("Post", postSchema, "posts")
