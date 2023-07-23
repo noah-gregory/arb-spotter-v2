@@ -241,4 +241,25 @@ exports.setApp = function ( app, client )
     }
     res.status(200).json(results); 
     })
+    app.post('/api/search', async (req,res,next) =>
+    {
+        const searchTerm = req.body;
+        try {
+        
+            const searchregex = new RegExp(searchTerm, 'i');
+            var results =  await Posts.find( {
+                $or: [
+                  {poster: searchregex},
+                  {tags: searchregex}
+                ]});
+            if(results){
+                console.log(JSON.stringify(results));
+            }
+        }catch (e)
+        {
+            console.log(e);
+            return res.status(400).send({error: 'Error fetching posts'});
+        }
+         res.status(200).send({results});
+    })
 }
