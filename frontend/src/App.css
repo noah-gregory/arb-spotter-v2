@@ -43,14 +43,14 @@
   top: 0;
   bottom: 0;
   margin-top: 2rem;
-  width: 21rem;
-  height: 25rem;
+  width: 21.5rem;
+  height: 25.5rem;
   flex-shrink: 0;
   border-radius: 1.875rem;
   border: 1px solid #393E46;
   background: #F7F7F7;
   }
-  .Title-Box{
+  /*.Title-Box{
   position: relative;
   align-items: center;
   width: 21rem;
@@ -59,7 +59,7 @@
   border-radius: 1.875rem 1.875rem 0rem 0rem;
   border: 1px solid #393E46;
   background: #F2E7D5;
-  }
+  }*/
   .upload-text{
   display: flex;
   width: 158.75px;
@@ -69,13 +69,13 @@
   flex-shrink: 0;
   color: #393E46;
   text-align: center;
-  font-family: Inter;
+  font-family: 'Nunito', sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;  
   }
-  .Title-Text{
+  /*.Title-Text{
   position: absolute;
   left: 0;
   right: 0;
@@ -98,7 +98,7 @@
   font-style: italic;
   font-weight: 400;
   line-height: normal;
-  }
+  }*/
   .Image-Holder{
   position: relative;
   left: 0;
@@ -106,7 +106,7 @@
   top: 0;
   bottom: 0;
   margin: auto;
-  margin-top: 5px;
+  margin-top: .8rem;
   vertical-align: middle;
   width: 16.125rem;
   height: 16.125rem;
@@ -133,6 +133,7 @@
   border-radius: 0.625rem;
   border: 1px solid #393E46;
   background: #F7F7F7;
+  font-family: 'Nunito', sans-serif;
   }
   .Caption-Text{
   position: relative;
@@ -141,8 +142,8 @@
   top: 1;
   bottom: 0;
   margin: auto;
-  margin-top: .7rem;
-  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: .8rem;
   background: transparent;
   border: none;
   outline: none;
@@ -150,17 +151,17 @@
   max-lines: 3;
   overflow: hidden;
   width: 15rem;
-  height: 2.1rem;
+  height: 2rem;
   flex-direction: column;
   justify-content: center;
   flex-shrink: 0;
   color: #393E46;
   text-align: center;
-  font-family: Inter;
+  font-family: 'Nunito', sans-serif;
   font-size: 1rem;
   font-style: italic;
   font-weight: 400;
-  line-height: .7rem;
+  line-height: 1rem;
   }
   .Caption-Text[contenteditable]:empty:focus::before,
   .Caption-Text[contenteditable]:empty::before{
@@ -175,17 +176,33 @@
   bottom: 0;
   margin: auto;
   margin-bottom: 1rem;
-  margin-left: 1rem;
-  width: 3rem;
-  height: 1.3rem;
+  margin-left: 1.9rem;
+  width: 3.2rem;
+  height: 1.5rem;
   flex-shrink: 0;
   border-radius: 30px;
   border: 1px solid #393E46;
   background: #F2E7D5;
   color: #393E46;
   text-align: center;
-  font-family: Inter;
+  font-family: 'Nunito', sans-serif;
   font-size: 0.675rem;
+  font-style: italic;
+  font-weight: 700;
+  }
+  .location-button{
+  color :black;
+  outline: none;
+  height: 1.4rem;
+  margin-top: .6rem;
+  width: 9rem;
+  border-radius: 10px;
+  border: 1px solid #393E46;
+  background-color: #F2E7D5;
+  cursor: pointer;
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.8rem;
   font-style: italic;
   font-weight: 700;
   }
@@ -204,6 +221,7 @@
   flex-shrink: 0;
   border-radius: 30px;
   border: 1px solid #393E46;
+  font-family: 'Nunito', sans-serif;
   background: #393E46;
   color: #F2E7D5;
   }
