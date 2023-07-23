@@ -10,7 +10,6 @@ export const verifyEmailPage = () => {
 
         }, 3000);
 
-
     }, [history]);
 
     return (
