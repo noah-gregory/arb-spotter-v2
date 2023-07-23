@@ -3,8 +3,13 @@
 // import jwt_decode from 'jwt-decode';
 // import { Link} from "react-router-dom";
 
+
+
+
 const UploadPage = () => {
+    
     return(
+        
         (
                 <section className='Upload-Holder'>
                     <section className='Image-Holder'>
@@ -12,14 +17,17 @@ const UploadPage = () => {
                         <button type='button' className='Upload-Button'><text className="upload-text">Upload Picture</text></button>
                     </section>
                 <button type="button"className="location-button">Select Location</button>
-                <span contentEditable='true'className='Caption-Text' id='CaptionText' type='text'></span>
-                <input maxLength='10'className='Tag-Button'placeholder="Add Tag"></input>
-                <input maxLength='10'className='Tag-Button'placeholder="Add Tag"></input>
-                <input maxLength='10'className='Tag-Button'placeholder="Add Tag"></input>
+                <textarea contentEditable='true'className='Caption-Text' id='CaptionText' type='text'maxLength={50} placeholder="Put Your Caption Here!
+                (Max 50 characters)"></textarea>
+                <input maxLength='9'className='Tag-Button'placeholder="Add Tag"></input>
+                <input maxLength='9'className='Tag-Button'placeholder="Add Tag"></input>
+                <input maxLength='9'className='Tag-Button'placeholder="Add Tag"></input>
                 <button type="button"className="finalize-button">Upload Post</button>
                 </section>
         )
     )
+    
 }
+
 
 export default UploadPage
