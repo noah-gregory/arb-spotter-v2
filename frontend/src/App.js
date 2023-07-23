@@ -5,6 +5,9 @@ import { BrowserRouter, Routes, Route} from "react-router-dom";
 import axios from 'axios';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
+import verifyEmail from './components/verifyEmail';
+
+ 
 
 function App() {
 	return (
@@ -16,6 +19,8 @@ function App() {
 				 
 				<Route path="/signup" index element={<main className="App"><SignupPage /></main>} />
 				
+				<Route path="/please-verify"><verifyEmail/>
+					</Route>
 			</Routes>
 		</BrowserRouter>
 	);
