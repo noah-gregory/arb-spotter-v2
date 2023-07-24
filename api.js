@@ -172,7 +172,10 @@ exports.setApp = function ( app, client )
             LastName: req.body.LastName,
             Email: req.body.Email,
             Login: req.body.Login,
-            Password: req.body.Password
+            Password: req.body.Password,
+            emailToken: crypto.randomBytes(64).toString('hex'),
+            isVerified: false
+
         })
 
 
@@ -211,32 +214,34 @@ exports.setApp = function ( app, client )
             ret = token.createToken(req.body.FirstName, req.body.LastName, req.body.Email, req.body.Login, req.body.Password, newUserSaved[0]._id);
             console.log("user has been added");
         
-      
+            const msg = {
+                from: 'arbnavigator@gmail.com', // Use the email address or domain
+                to: newUser.email,
+                subject: 'Verify your Email',
+                text: `Thanks for registering please verify the email using the link below. 
+                http://${req.headers.host}/verify-email?token=${newUser.emailToken}
+                `,
+                html: `
+                <h1> Hello</h1>
+                <p>Thanks for registering </p>
+                <p>Please click the link below to verify your account</p>
+                <a href ="http://${req.headers.host}/verify-email?token=${newUser.emailToken}">Verify your account</a>
+                `
+            }
+            try {
+                await sgMail.send(msg);
+                req.flash('success','Thanks for registering, Please check your email to verify your account')
+                req.redirect('/');
+            }catch {error} {
+                console.log(error);
+                req.flash('error', 'Something went wrong');
+                req.redirect('/');
+
+            }
 
         console.log(ret);
 
         res.status(200).json(ret);    
     }
     );
-
-    // Define a route to handle email sending
-    app.post('api/send-email', (req, res) => {
-        const msg = {
-            to: 'love.salma987@gmail.com',
-            from: 'arbnavigator@gmail.com', // Use the email address or domain you verified above
-            subject: 'TEST1',
-            text: 'Attempt 1 TO SEND 1ST EMAIL'
-            };
-  
-    sgMail.send(msg)
-      .then(() => {
-        console.log('Email sent successfully!');
-        res.status(200).json({ message: 'Email sent successfully!' });
-      })
-      .catch((error) => {
-        console.error('Error sending email:', error);
-        res.status(500).json({ error: 'Failed to send email.' });
-      });
-  }
-  );
 }

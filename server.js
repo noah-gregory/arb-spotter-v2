@@ -5,7 +5,8 @@ const path = require('path');
 const port = process.env.PORT || 5000;
 const app = express();
 const sgMail = require('@sendgrid/mail');
-
+sgMail = setApikey(process.env.SENDGRID_API_KEY);
+const crypto = require('crypto');
 
 // require('./database');
 app.set('port', (process.env.PORT || 5000));
