@@ -42,6 +42,7 @@
   right: 0;
   top: 0;
   bottom: 0;
+  margin:auto;
   margin-top: 2rem;
   width: 21.5rem;
   height: 25.5rem;
@@ -116,21 +117,21 @@
   background: #F2E7D5;
   }
   .Image-Preview{
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    margin-bottom: 2rem;
-    vertical-align: middle;
-    width: 16rem;
-    height: 14rem;
-    flex-shrink: 0;
-    border-radius: .625rem;
-    border-color:#F2E7D5;
-    background:none;
-    }
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  margin-bottom: 2rem;
+  vertical-align: middle;
+  width: 16.08rem;
+  height: 14.05rem;
+  flex-shrink: 0;
+  border-radius: .625rem;
+  border-color:#F2E7D5;
+  background:#F2E7D5;
+  }
   input[type="file"] {
     display: none;
 }
@@ -165,7 +166,7 @@
   top: 1;
   bottom: 0;
   margin: auto;
-  margin-top: 1rem;
+  margin-top: 3.1rem;
   margin-bottom: 1rem;
   background: transparent;
   border: none;
@@ -182,7 +183,6 @@
   text-align: center;
   font-family: 'Nunito', sans-serif;
   font-size: 1rem;
-  font-style: italic;
   font-weight: 400;
   line-height: 1rem;
   }
@@ -210,6 +210,10 @@
   font-weight: 700;
   }
   .location-button{
+  position: absolute;
+  margin: auto;
+  margin-top: 9.7rem;
+  margin-left: 6.2rem;
   color :black;
   outline: none;
   height: 1.4rem;
@@ -390,3 +394,39 @@ label,
     display: inline-block;
 }
 /* end of login/signup */
+/* navbar css */
+.nav {
+  background-color: #393E46;
+  height: 2.3rem;
+  color: #F2E7D5;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 0rem;
+  padding: 0 1rem;
+}
+.nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  gap: 4rem;
+}
+
+.nav a {
+  color: inherit;
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: .25rem;
+}
+
+.nav li.active {
+  background-color: #555;
+}
+
+.nav li:hover {
+  background-color: #777;
+}
+/*end of navbar*/
