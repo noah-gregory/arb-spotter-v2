@@ -115,6 +115,25 @@
   border: 1px solid #393E46;
   background: #F2E7D5;
   }
+  .Image-Preview{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    margin-bottom: 2rem;
+    vertical-align: middle;
+    width: 16rem;
+    height: 14rem;
+    flex-shrink: 0;
+    border-radius: .625rem;
+    border-color:#F2E7D5;
+    background:none;
+    }
+  input[type="file"] {
+    display: none;
+}
   .Upload-Button{
   position: absolute;
   left: 0;
@@ -122,10 +141,10 @@
   top: 0;
   bottom: 0;
   margin: auto;
+  margin-top: 14.3rem;
   display: flex;
-  width: 9.875rem;
-  height: 1.6875rem;
-  padding: 1.03594rem 2.97656rem 1.19531rem 2.97656rem;
+  width: 7.875rem;
+  height: 1.4875rem;
   cursor: pointer;
   justify-content: center;
   align-items: center;
@@ -134,6 +153,9 @@
   border: 1px solid #393E46;
   background: #F7F7F7;
   font-family: 'Nunito', sans-serif;
+  font-size: .8rem;
+  font-weight: 400;
+  color:#393E46;
   }
   .Caption-Text{
   position: relative;
@@ -144,7 +166,7 @@
   bottom: 0;
   margin: auto;
   margin-top: 1rem;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1rem;
   background: transparent;
   border: none;
   outline: none;
@@ -152,7 +174,7 @@
   max-lines: 3;
   overflow: hidden;
   width: 15rem;
-  height: 2rem;
+  height: 2.2rem;
   flex-direction: column;
   justify-content: center;
   flex-shrink: 0;
@@ -229,6 +251,7 @@
   top: 0;
   bottom: 0;
   margin: auto;
+  margin-top: 2rem;
   display: flex;
   width: 9.625rem;
   height: 9rem;
