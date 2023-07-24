@@ -17,7 +17,7 @@ function App() {
 				 
 				<Route path="/signup" index element={<main className="App"><SignupPage /></main>} />
 
-				<Route path="/upload" index element={<UploadPage />} />
+				<Route path="/upload" index element={<main className="App"><UploadPage /></main>} />
 			</Routes>
 		</BrowserRouter>
 	);
