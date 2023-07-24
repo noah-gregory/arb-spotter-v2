@@ -214,6 +214,7 @@ exports.setApp = function ( app, client )
             ret = token.createToken(req.body.FirstName, req.body.LastName, req.body.Email, req.body.Login, req.body.Password, newUserSaved[0]._id);
             console.log("user has been added");
         
+            //Setting the messege in the e-mail
             const msg = {
                 from: 'arbnavigator@gmail.com', // Use the email address or domain
                 to: newUser.email,
