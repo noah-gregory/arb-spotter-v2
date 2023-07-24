@@ -45,26 +45,26 @@ const LoginPage = () => {
     {
         console.log("is axios working?");
         var res = response.data;
-    if (res.error)
-    {
-        setErrMsg('User/Password combination incorrect');
-    }
-    else
-    {
-        console.log("before jwt");
-        storage.storeToken(res);
+        if (res.error)
+        {
+            setErrMsg('User/Password combination incorrect');
+        }
+        else
+        {
+            console.log("before jwt");
+            storage.storeToken(res);
 
-        var jwt = require("jwt-decode");
-        var ud = jwt_decode(storage.retrieveToken(),{complete:true});
+            var jwt = require("jwt-decode");
+            var ud = jwt_decode(storage.retrieveToken(),{complete:true});
 
-        var userId =ud.userId;
-        var firstName = ud.firstName;
-        var lastName = ud.lastName;
+            var userId =ud.userId;
+            var firstName = ud.firstName;
+            var lastName = ud.lastName;
 
-        var user = {firstName:firstName,lastName:lastName};
-        localStorage.setItem('user_data', JSON.stringify(user));
-        window.location.href = '/upload';
-    }
+            var user_data = {firstName:firstName,lastName:lastName,username:user,id:userId};
+            localStorage.setItem('user_data', JSON.stringify(user_data));
+            window.location.href = '/upload';
+        }
     })
     .catch(function (error)
     {
@@ -111,6 +111,6 @@ const LoginPage = () => {
     )
 }
 
-export default LoginPage
+export default LoginPage;
 
 

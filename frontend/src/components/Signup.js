@@ -117,7 +117,7 @@ const SignupPage = () => {
             }
             else
             {
-                let thisUser = {firstName:res.firstName,lastName:res.lastName,id:res.id}
+                let thisUser = {firstName:res.firstName,lastName:res.lastName,username:user,id:res.id}
                 localStorage.setItem('user_data', JSON.stringify(thisUser));
 
                 setErrMsg('');
