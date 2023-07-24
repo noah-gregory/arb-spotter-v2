@@ -216,5 +216,27 @@ exports.setApp = function ( app, client )
         console.log(ret);
 
         res.status(200).json(ret);    
-    });
+    }
+    );
+
+    // Define a route to handle email sending
+    app.post('api/send-email', (req, res) => {
+        const msg = {
+            to: 'love.salma987@gmail.com',
+            from: 'arbnavigator@gmail.com', // Use the email address or domain you verified above
+            subject: 'TEST1',
+            text: 'Attempt 1 TO SEND 1ST EMAIL'
+            };
+  
+    sgMail.send(msg)
+      .then(() => {
+        console.log('Email sent successfully!');
+        res.status(200).json({ message: 'Email sent successfully!' });
+      })
+      .catch((error) => {
+        console.error('Error sending email:', error);
+        res.status(500).json({ error: 'Failed to send email.' });
+      });
+  }
+  );
 }

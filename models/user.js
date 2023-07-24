@@ -16,6 +16,14 @@ Email: {
 type: String,
 // required: true
 },
+EmailToken: {
+type: String,
+// required: true
+},
+isVerified: {
+type: Boolean,
+// required: true
+},
 Login: {
 type: String,
 // required: true

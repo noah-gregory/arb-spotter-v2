@@ -4,6 +4,9 @@ const cors = require('cors');
 const path = require('path');
 const port = process.env.PORT || 5000;
 const app = express();
+const sgMail = require('@sendgrid/mail');
+
+
 // require('./database');
 app.set('port', (process.env.PORT || 5000));
 
@@ -22,6 +25,7 @@ mongoose.connect(url)
 
 // API
 var api = require('./api.js');
+
 api.setApp( app, mongoose );
 // const users = require('./api/users');
 // app.use('./api/users', users);

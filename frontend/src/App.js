@@ -19,8 +19,7 @@ function App() {
 				 
 				<Route path="/signup" index element={<main className="App"><SignupPage /></main>} />
 				
-				<Route path="/please-verify"><verifyEmail/>
-					</Route>
+				<Route path="/please-verify" index element={<main className="App"><verifyEmailPage /></main>} />
 			</Routes>
 		</BrowserRouter>
 	);

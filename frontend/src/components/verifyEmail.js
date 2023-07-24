@@ -1,20 +1,19 @@
 import { useRef, useState, useEffect} from 'react';
-import { Link, useHistory} from "react-router-dom";
+import { Link } from "react-router-dom";
+import axios from 'axios';
 
-export const verifyEmailPage = () => {
-    const history = useHistory();
+const verifyEmailPage = () => {
+  const data = {
+    // any additional data you want to pass to the server
+  };
 
-    useEffect( () => {
-        setTimeout( () => {
-            history.push('/');
+  axios.post('http://localhost:3000/send-email', data)
+    .then((response) => {
+      console.log(response.data.message); // Email sent successfully!
+    })
+    .catch((error) => {
+      console.error('Error sending email:', error);
+    });
+};
 
-        }, 3000);
-
-    }, [history]);
-
-    return (
-        <div className = "content-container">
-            <h1>Please verify your email adres</h1>
-        </div>
-    )
-}
+export default verifyEmailPage;
