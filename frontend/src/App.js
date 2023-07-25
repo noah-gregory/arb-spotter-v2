@@ -6,6 +6,7 @@ import axios from 'axios';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import UploadPage from './pages/UploadPage';
+import PasswordForgetPage from './pages/PasswordPage';
 
 function App() {
 	return (
@@ -18,6 +19,8 @@ function App() {
 				<Route path="/signup" index element={<main className="App"><SignupPage /></main>} />
 
 				<Route path="/upload" index element={<main className="App"><UploadPage /></main>} />
+
+				<Route path="/reset" index element={<main className="App"><PasswordForgetPage /></main>} />
 			</Routes>
 		</BrowserRouter>
 	);
