@@ -103,7 +103,9 @@ const LoginPage = () => {
                     <p>
                         Need an Account?<br />
                         <span className="line">
-                            <Link to="/Signup">Sign Up</Link> 
+                            <Link to="/Signup">Sign Up</Link>
+                            <div><Link to="/reset">Reset Password</Link></div>
+                            
                         </span>
                     </p>
                 </section>
