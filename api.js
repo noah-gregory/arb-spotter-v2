@@ -210,7 +210,7 @@ exports.setApp = function ( app, client )
            
             console.log(newUser.FirstName);
             const token = require("./createJWT.js");
-            ret = token.createToken(req.body.FirstName, req.body.LastName, req.body.Email, req.body.Login, req.body.Password, newUserSaved[0]._id);
+            ret = token.createToken1(req.body.FirstName, req.body.LastName, req.body.Email, req.body.Login, req.body.Password, newUserSaved[0]._id);
             console.log("user has been added");
         
       
@@ -256,7 +256,7 @@ exports.setApp = function ( app, client )
                 console.log(JSON.stringify(results));
             }
         }catch (e)
-        {
+        {   
             console.log(e);
             return res.status(400).send({error: 'Error fetching posts'});
         }

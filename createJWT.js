@@ -5,9 +5,9 @@ exports.createToken = function ( fn, ln, id)
 {
     return _createToken( fn, ln, id);
 }
-exports.createToken = function ( fn, ln, email, username, password, id)
+exports.createToken1 = function ( fn, ln, email, username, password, id)
 {
-    return _createToken(fn, ln, email, username, password, id);
+    return _createToken1(fn, ln, email, username, password, id);
 }
 
 _createToken = function ( fn, ln , id)
@@ -28,7 +28,7 @@ _createToken = function ( fn, ln , id)
     }
     return ret;
 }
-_createToken = function ( fn, ln , email, username, password, id)
+_createToken1 = function ( fn, ln , email, username, password, id)
 {
     try
     {
