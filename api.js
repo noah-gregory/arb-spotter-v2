@@ -1,3 +1,5 @@
+const multer = require('multer');
+var fs = require('fs');
 require('express');
 require('mongodb');
 
@@ -7,6 +9,14 @@ exports.setApp = function ( app, client )
     const User = require("./models/user.js");
     //load card model
     const Card = require("./models/cards.js");
+    //load post model
+    const Post = require("./models/post.js");
+
+    const upload = multer({
+        limits: {
+          fieldSize: 50 * 1024 * 1024, // 50 MB (adjust as needed)
+        },
+      });
 
     app.post('/api/addcard', async (req, res, next) =>
     {
@@ -182,5 +192,52 @@ exports.setApp = function ( app, client )
         console.log(ret);
 
         res.status(200).json(ret);    
+    });
+
+    app.post('/api/search', async (req,res,next) =>
+    {
+        const searchTerm = req.body.search;
+        console.log(searchTerm);
+        try {
+            const searchregex = new RegExp(searchTerm, 'i');
+            var results =  await Post.find( {
+                $or: [
+                  {poster: searchregex},
+                  {tags: searchregex}
+                ]});
+            if(results){
+                console.log("hi");
+                // console.log(JSON.stringify(results));
+            }
+        }catch (e)
+        {
+            console.log(e);
+            return res.status(400).send({error: 'Error fetching posts'});
+        }
+         res.status(200).send(results);
+    });
+
+    app.post('/api/uploadPost', upload.single('json'), async (req,res,next) =>
+    {
+        // incoming: poster, image, tags
+        // outgoing: json(savedPost)
+        var savedPost;
+        const jsonData = JSON.parse(req.body.json);
+        var newPost = new Post({poster: jsonData.poster, 
+                                image: jsonData.image,
+                                caption: jsonData.caption,
+                                tags: jsonData.tags});
+        
+        try
+        {
+            newPost.save().then(savedPost => {
+                savedPost = newPost;
+            });
+            res.status(200).json(savedPost); // uploaded post successfully
+        }
+        catch(e)
+        {
+            res.status(400).json({message: e});
+        }
     });
 }

@@ -63,7 +63,7 @@ const LoginPage = () => {
 
         var user = {firstName:firstName,lastName:lastName};
         localStorage.setItem('user_data', JSON.stringify(user));
-        window.location.href = '/upload';
+        window.location.href = '/feed';
     }
     })
     .catch(function (error)
