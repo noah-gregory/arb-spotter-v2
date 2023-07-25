@@ -15,8 +15,12 @@ LastName: {
 Email: {
 type: String,
 // required: true
-emailToken: String,
-isVerified: Boolean,
+},
+emailToken: {
+    type: String,
+},
+isVerified:{
+    type:  Boolean,
 },
 Login: {
 type: String,

@@ -127,7 +127,21 @@ async function search()
     }
 }
 
-search();
+// search();
+
+async function delOne()
+{
+    try
+    {
+        await user.deleteOne({'Email' : "level.7.vayne@gmail.com"});
+        console.log("user deleted");
+    }
+    catch(e)
+    {
+        console.log(e);
+    }
+}
+delOne();
 // // add a user to our database
 // // this is an instance 
 
