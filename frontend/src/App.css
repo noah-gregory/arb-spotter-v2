@@ -459,7 +459,7 @@ label,
 
 .grid {
   /* min-height: 100%; */
-  margin-top: 3.4rem;
+  margin-top: 3.3rem;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -488,7 +488,7 @@ label,
   display:flex;
   position:absolute;
   justify-content: center;
-  top: 2.8rem;
+  top: 2.6rem;
   left: 20%;
   right:20%;
 }
@@ -505,19 +505,19 @@ label,
   position:fixed;
   top:0;
   left:0;
-  width:100vh;
+  width:100%;
   background-color: #393E46;
-  height: 2.3rem;
+  height: 2.6rem;
   color: #F2E7D5;
   display: flex;
   justify-content: space-between;
   align-items: stretch;
   gap: 0rem;
   padding: 0 1rem;
+  z-index: 9999;
 }
 .nav ul {
   padding: 0;
-  width:20vh;
   background-color: #393E46;
   margin: 0;
   list-style: none;
