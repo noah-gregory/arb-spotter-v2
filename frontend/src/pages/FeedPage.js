@@ -1,13 +1,13 @@
 import React from 'react';
 import Feed from '../components/Feed';
-import SearchBar from '../components/SearchBar';
+import Navbar from '../components/Navbar';
 
 const FeedPage = () =>
 {
     console.log("FeedPage");
     return(
       <div >
-        {/* <SearchBar /> */}
+        <Navbar />
         <Feed />
       </div>
     );
