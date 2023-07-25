@@ -8,6 +8,7 @@ import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import UploadPage from './pages/UploadPage';
 import FeedPage from './pages/FeedPage';
+import VerifyPage from './pages/VerifyPage';
 
 function App() {
 	return (
@@ -22,6 +23,8 @@ function App() {
 				<Route path="/upload" index element={<main className="App"><UploadPage /></main>} />
 
 				<Route path="/feed" index element={<main className="App"><FeedPage /></main>} />
+				<Route path="/verify/:token" element={<main className="App"><VerifyPage /></main>} />
+
 			</Routes>
 		</BrowserRouter>
 	);

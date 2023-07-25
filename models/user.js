@@ -6,26 +6,31 @@ const UserSchema = new Schema({
 
 FirstName: {
 type: String,
-required: true
+// required: true
 },
 LastName: {
     type: String,
-    required: true
+    // required: true
 },
 Email: {
 type: String,
-required: true
+// required: true
+},
+emailToken: {
+    type: String,
+},
+isVerified:{
+    type:  Boolean,
 },
 Login: {
 type: String,
-required: true
+// required: true
 },
 Password: {
 type: String,
-required: true
+// required: true
 }
 },  {
     versionKey: false // You should be aware of the outcome after set to false
 });
 module.exports = user = mongoose.model("users", UserSchema);
-
