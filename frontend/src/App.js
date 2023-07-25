@@ -9,6 +9,7 @@ import SignupPage from './pages/SignupPage';
 import UploadPage from './pages/UploadPage';
 import FeedPage from './pages/FeedPage';
 import VerifyPage from './pages/VerifyPage';
+import PasswordForgetPage from './pages/PasswordPage';
 
 function App() {
 	return (
@@ -24,7 +25,7 @@ function App() {
 
 				<Route path="/feed" index element={<main className="App"><FeedPage /></main>} />
 				<Route path="/verify/:token" element={<main className="App"><VerifyPage /></main>} />
-
+				<Route path="/reset" index element={<main className="App"><PasswordForgetPage /></main>} />
 			</Routes>
 		</BrowserRouter>
 	);

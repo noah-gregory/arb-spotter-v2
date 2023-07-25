@@ -50,15 +50,16 @@ exports.setApp = function ( app, client )
         // db.collection('Users').find({Login:login,Password:password}).toArray();
 
         // Attempt to find user in database with provided login and password
-        const results = await User.find({'Login' : login, 'Password' : password, 'isVerified' : true});
+        const results = await User.find({'Login' : login, 'Password' : password});
         
         var id = -1;
         var fn = '';
         var ln = '';
         var ret;
-
-        if( results.length > 0 )
+        console.log(results[0]);
+        if( (results.length > 0 ) )
         {
+            if( results[0].isVerified == true){
             console.log("there was a hit");
             
             // Get elements of result
@@ -78,7 +79,11 @@ exports.setApp = function ( app, client )
             {
                 ret = {error:e.message};
             }
+        }else if(results[0].isVerified == false)
+        {
+            ret = {error:"Email is not verified"};
         }
+    }
         else
         {
             ret = {error:"Login/Password incorrect"};
@@ -179,7 +184,8 @@ exports.setApp = function ( app, client )
                 subject: 'Account Verification',
                 html: `<p>Hello ${req.body.Login},</p><p>Please click the following link to verify your account: <a href="${verificationLink}">${verificationLink}</a></p>`,
               });
-            const savedUser = await newUser.save(); 
+             
+            await newUser.save(); 
             try{
                  newUserSaved = await User.find({'Login' : newUser.Login, 'Password' : newUser.Password});
             }
