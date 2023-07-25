@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, Container } from "react-bootstrap";
 import { useState} from "react";
 import axios from 'axios';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -72,7 +72,7 @@ const Feed = () => {
         </button>
         </div>
         {condition && <div className="grid">{response.map(renderCard)}</div>}
-      </div>
+    </div>
   )
 };
 
