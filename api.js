@@ -316,4 +316,19 @@ exports.setApp = function ( app, client )
         }
          res.status(200).send(results);
     });
+
+    app.post('/api/deletePost', async (req,res,next) =>
+    {
+        try {
+            var results =  await Post.deleteOne({'_id':req.body});
+            if(results){
+                console.log("Successfully deleted");
+            }
+        }catch (e)
+        {
+            console.log(e);
+            return res.status(400).send({error: 'Error deleting post'});
+        }
+         res.status(200).send({results});
+    });
 }
