@@ -131,7 +131,6 @@ const UploadPage = () => {
                 <label for="file-upload" class="Upload-Button">Choose Image</label>
                 <input type="file" id='file-upload' onChange={handleFileChange}/>
             </section>
-            <button type="button"className="location-button">Select Location</button>
             <textarea contentEditable='true'className='Caption-Text' id='CaptionText' onChange={e => setCaption(e.target.value)} type='text'maxLength={50} placeholder="Put Your Caption Here!
             (Max 50 characters)"></textarea>
             <input maxLength='9'className='Tag-Button'placeholder="Add Tag"value={tag1}onChange={e => setInputTag1(e.target.value)}></input>
