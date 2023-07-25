@@ -50,7 +50,7 @@ exports.setApp = function ( app, client )
         // db.collection('Users').find({Login:login,Password:password}).toArray();
 
         // Attempt to find user in database with provided login and password
-        const results = await User.find({'Login' : login, 'Password' : password});
+        const results = await User.find({'Login' : login, 'Password' : password, 'isVerified' : true});
         
         var id = -1;
         var fn = '';
@@ -131,13 +131,13 @@ exports.setApp = function ( app, client )
         // var newUser = new User({FirstName: firstname, LastName: lastname, Email: email, Login: login, Password: password});
         
         var newUser =new User({
-            FirstName: req.body.FirstName,
-            LastName: req.body.LastName,
+            FirstName: req.body.firstname,
+            LastName: req.body.lastname,
             emailToken: emailKey,
             isVerified: false,
-            Email: req.body.Email,
-            Login: req.body.Login,
-            Password: req.body.Password
+            Email: req.body.email,
+            Login: req.body.login,
+            Password: req.body.password
         });
        
        
@@ -157,6 +157,7 @@ exports.setApp = function ( app, client )
 
              var num = await User.findOne({'Login' : newUser.Login})
              console.log(num);
+             console.log(newUser.Login);
              if (num)
              {
                 
@@ -174,7 +175,7 @@ exports.setApp = function ( app, client )
             
              await transporter.sendMail({
                 from: 'arbnavigator01@gmail.com',
-                to: req.body.Email,
+                to: req.body.email,
                 subject: 'Account Verification',
                 html: `<p>Hello ${req.body.Login},</p><p>Please click the following link to verify your account: <a href="${verificationLink}">${verificationLink}</a></p>`,
               });
