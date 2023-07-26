@@ -10,6 +10,7 @@ import UploadPage from './pages/UploadPage';
 import FeedPage from './pages/FeedPage';
 import VerifyPage from './pages/VerifyPage';
 import PasswordForgetPage from './pages/PasswordPage';
+import ChangePasswordPage from './pages/ChangePasswordPage';
 
 function App() {
 	return (
@@ -26,6 +27,8 @@ function App() {
 				<Route path="/feed" index element={<main className="App"><FeedPage /></main>} />
 				<Route path="/verify/:token" element={<main className="App"><VerifyPage /></main>} />
 				<Route path="/reset" index element={<main className="App"><PasswordForgetPage /></main>} />
+				<Route path="/reset/:token" element={<main className="App"><ChangePasswordPage /></main>} />
+
 			</Routes>
 		</BrowserRouter>
 	);
