@@ -174,7 +174,7 @@ exports.setApp = function ( app, client )
              if (num2)
              {
                 console.log("email exists");
-                return res.status(504).send({error: 'Email already exists'});
+                return res.status(500).send({error: 'Email already exists'});
                 
              }
             
