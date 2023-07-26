@@ -1,17 +1,17 @@
 import React from 'react';
 
 // import PageTitle from '../components/PageTitle';
-import Signup from '../components/Signup';
+import CheckEmail from '../components/CheckEmail';
 
-const SignupPage = () =>
+const CheckEmailPage = () =>
 {
-    console.log("SignupPage");
+    console.log("CheckEmailPage");
     return(
       <div>
         {/* <PageTitle /> */}
-        <Signup />
+        <CheckEmail />
       </div>
     );
 };
 
-export default SignupPage;
+export default CheckEmailPage;
