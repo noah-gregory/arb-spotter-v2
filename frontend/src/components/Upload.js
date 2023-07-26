@@ -89,9 +89,10 @@ const UploadPage = () => {
                 base64Image = dataURL.split(',')[1];
                 // console.log(base64Image); // This is the Base64-encoded image
 
+                console.log("username: " + userDetails.username);
                 let obj = {poster:userDetails.username, image:base64Image, caption:caption, tags:[tag1,tag2,tag3]};
                 // console.log(obj.image);
-        
+            
                 // Append the JSON data as a blob to the FormData
                 formData.append('json', JSON.stringify(obj));
                 // console.log(formData.get('json'));

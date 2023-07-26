@@ -177,7 +177,7 @@ exports.setApp = function ( app, client )
                 from: 'arbnavigator01@gmail.com',
                 to: req.body.email,
                 subject: 'Account Verification',
-                html: `<p>Hello ${req.body.Login},</p><p>Please click the following link to verify your account: <a href="${verificationLink}">${verificationLink}</a></p>`,
+                html: `<p>Hello ${req.body.login},</p><p>Please click the following link to verify your account: <a href="${verificationLink}">${verificationLink}</a></p>`,
               });
             const savedUser = await newUser.save(); 
             try{
@@ -190,7 +190,7 @@ exports.setApp = function ( app, client )
            
             console.log(newUser.FirstName);
             const token = require("./createJWT.js");
-            ret = token.createToken1(req.body.FirstName, req.body.LastName, req.body.Email, req.body.Login, req.body.Password, newUserSaved[0]._id);
+            ret = token.createToken1(req.body.firstName, req.body.lastName, req.body.email, req.body.login, req.body.password, newUserSaved[0]._id);
             console.log("user has been added, unverified");
         
       
@@ -298,7 +298,6 @@ exports.setApp = function ( app, client )
     app.post('/api/searchUser', async (req,res,next) =>
     {
         const searchTerm = req.body.search;
-        console.log(searchTerm);
         try {
             const searchregex = new RegExp(searchTerm, 'i');
             var results =  await Post.find( {
@@ -319,8 +318,9 @@ exports.setApp = function ( app, client )
 
     app.post('/api/deletePost', async (req,res,next) =>
     {
+        console.log(req.body.search);
         try {
-            var results =  await Post.deleteOne({'_id':req.body});
+            var results =  await Post.deleteOne({'_id':req.body.search});
             if(results){
                 console.log("Successfully deleted");
             }

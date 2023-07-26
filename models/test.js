@@ -18,6 +18,15 @@ console.log("connected to mongodb");
 let ud = jwt.decode('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJmYiIsImxhc3ROYW1lIjoic3dhZyIsImlhdCI6MTY4OTgzMDcwOH0.kJW5dktXNSI_BncrMAahMr2hC0-8RaYnzNq8Z9MUExI', {complete:true});
 console.log(ud);
 
+async function delOne() {
+    try{
+        await user.deleteOne({'Email' : "jbrockedgar@gmail.com"});
+        console.log("user deleted");
+    }catch(e){
+        console.log(e);
+    } 
+}
+delOne();
 
 // Create collection of Model
 

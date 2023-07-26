@@ -9,6 +9,7 @@ function Navbar() {
       <ul>
         <CustomLink to="/upload">Upload Post</CustomLink>
         <CustomLink to="/feed">Search Posts</CustomLink>
+        <CustomLink to="/delete">My Posts</CustomLink>
         <CustomLink to="/login">Log Out</CustomLink>
       </ul>
     </nav>

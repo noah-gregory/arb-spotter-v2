@@ -316,7 +316,7 @@ label,
 }
 
 .login-button {
-  color :black;
+  color :#393E46;
   background-color: #F2E7D5;
   cursor: pointer;
   padding: 0.5rem;
@@ -325,7 +325,7 @@ label,
 .instructions {
     font-size: 0.75rem;
     border-radius: 0.5rem;
-    background: #000;
+    background: #393E46;
     color: #fff;
     padding: 0.25rem;
     position: relative;
@@ -371,6 +371,7 @@ label,
 /* begining of Feed */
 
 .posterbox {
+  position: relative;
   font-weight: bold;
   padding: 10px;
   height: 50px;
@@ -379,7 +380,7 @@ label,
   background-color: #F2E7D5;
   border-width:0px 0px 1px 0px;
   border-style:solid;
-  border-color:#000000;
+  border-color:#393E46;
 }
 
 .post-image {
@@ -410,7 +411,7 @@ label,
   background: #F2E7D5;
   border-width:1px;
   border-style:solid;
-  border-color:#000000;
+  border-color:#393E46;
   border-radius: 30px;
   width: 85%;
   height: 40px;
@@ -432,7 +433,7 @@ label,
   box-shadow: 0px 12px 18px -6px rgba(0, 0, 0, 0.1);
   border-width:1px;
   border-style:solid;
-  border-color:#000000;
+  border-color:#393E46;
 }
 
 .tag__box{
@@ -453,6 +454,7 @@ label,
   bottom: 5px;
   height: 80px;
   width: 100%;
+  word-wrap: break-word;
   align-items: end;
   align-content: end;
 }
@@ -524,9 +526,12 @@ label,
   display: flex;
   gap: 4rem;
 }
+.nav li{
+  width:12vw;
+}
 
 .nav a {
-  width:20vh;
+  width: 12vw;
   background-color: #393E46;
   color: inherit;
   text-decoration: none;
@@ -544,3 +549,14 @@ label,
   background-color: #777;
 }
 /*end of navbar*/
+
+/* delete post css */
+.delete-btn{
+  position:absolute;
+  width:40px;
+  height:30px;
+  border-radius: 50px;
+  left:18px;
+  background-color: #393E46;
+}
+/* end of delete post */

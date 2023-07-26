@@ -60,9 +60,10 @@ const LoginPage = () => {
         var userId =ud.userId;
         var firstName = ud.firstName;
         var lastName = ud.lastName;
+        console.log(userId);
 
-        var user = {firstName:firstName,lastName:lastName};
-        localStorage.setItem('user_data', JSON.stringify(user));
+        var userJs = {firstName:firstName,lastName:lastName, id:userId, username:user};
+        localStorage.setItem('user_data', JSON.stringify(userJs));
         window.location.href = '/feed';
     }
     })

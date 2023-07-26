@@ -1,16 +1,59 @@
 import React from "react";
-import { Card, Container, Col,Row } from "react-bootstrap";
-import { useState} from "react";
+import { Card, Container, Col } from "react-bootstrap";
+import { useState, useEffect } from "react";
 import axios from 'axios';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons"
 
 const Feed = () => {
-  var [searchData, setSearch] = useState('');
   var [response, setData] = useState('');
   var [condition, setCondition] = useState(false);
+  var [message, setMessage] = useState(false);
+
+  useEffect(() => {
+    // Your function code here
+    doSearch();
+    // You can call any function you want here.
+  }, []);
+
   // var tag1_exists = card.tags[0] != "";
   // console.log(response);
+
+  const doSearch = async () => {
+    // e.preventDefault();
+
+    const userDetails = JSON.parse(localStorage.getItem('user_data'));
+    let obj = {search:userDetails.username};
+    let js = JSON.stringify(obj);
+
+    response = await axios.post(buildPath('api/searchUser'), js, {
+        headers: {
+        'Content-Type': 'application/json',
+        }
+    });
+    setData(response.data);
+    setCondition(true);
+    console.log(response.data.length);
+    if(response.data.length == 0){
+      setMessage(true);
+    }
+    else{
+      setMessage(false);
+    }
+};
+
+const doDelete = async (id) => {
+  // e.preventDefault();
+  let obj = {search:id};
+  let js = JSON.stringify(obj);
+
+    response = await axios.post(buildPath('api/deletePost'), js, {
+        headers: {
+        'Content-Type': 'application/json',
+        }
+    });
+    doSearch();
+  };
 
   const renderCard = (card, index) => {
     var tag1_exists = true;
@@ -27,7 +70,7 @@ const Feed = () => {
     }
     return (
       <Card style={{ width: "8rem" }} key={index} className="box">
-         <Card.Title className="posterbox">{card.poster}</Card.Title>
+         <Card.Title className="posterbox"><button className="delete-btn" onClick={() => doDelete(card._id)}><FontAwesomeIcon icon={faTrashCan} style={{color: "#f7f7f7"}} /></button>{card.poster}</Card.Title>
         <Container className="image__box">
           <Card.Img variant="top"  src={`data:image/jpeg;base64,${card.image}`} className="post-image" />
         </Container>
@@ -56,29 +99,9 @@ const Feed = () => {
             return 'http://localhost:5000/' + route;
         }
     }
-
-    const doSearch = async () => {
-        // e.preventDefault();
-
-        const userDetails = JSON.parse(localStorage.getItem('user_data'));
-        console.log(userDetails);
-        let obj = {search:userDetails.id};
-        let js = JSON.stringify(obj);
-
-        response = await axios.post(buildPath('api/searchUser'), js, {
-            headers: {
-            'Content-Type': 'application/json',
-            }
-        });
-        console.log("!!!!");
-        setData(response.data);
-        setCondition(true);
-    };
-
-    doSearch();
-
   return (
     <div>
+        {message && <h1>Oh no! You have no posts!</h1>}
         {condition && <div className="grid">{response.map(renderCard)}</div>}
     </div>
   )
