@@ -167,7 +167,7 @@ exports.setApp = function ( app, client )
              {
                 
                 console.log("login exists");
-                return res.status(500).send({error: 'Login already exists'});
+                return res.status(500).send({error: 'Username already exists'});
                 
              }
              const num2 = await User.findOne({'Email' : newUser.Email})
@@ -332,5 +332,85 @@ exports.setApp = function ( app, client )
             return res.status(400).send({error: 'Error deleting post'});
         }
          res.status(200).send({results});
+    });
+
+    app.post('/api/resetPassword', async (req,res,next) =>
+    {
+        
+        var emailKey = genRanHex(16);
+        console.log(emailKey);
+        const { email } = req.body;
+        const results = await User.find({'Email' : email});
+
+        if( (results.length > 0 ) )
+        {
+            
+            var user = await User.findOne({'Email' : email});
+            user.emailToken = emailKey;
+
+            await user.save();
+
+            const transporter = nodemailer.createTransport({
+                host: 'smtp.gmail.com',
+                port: 587,
+                
+                auth: {
+                  user: 'arbnavigator01@gmail.com',
+                  pass: 'yusssvlqxdguglpo',
+                },
+              }); 
+              console.log(user.Login);
+            var link = buildPath('reset/'+ emailKey);
+            await transporter.sendMail({
+                from: 'arbnavigator01@gmail.com',
+                to: user.Email,
+                subject: 'Password Reset',
+                html: `<p>Hello ${user.Login},</p><p>Please click the following link to reset your password: <a href="${link}">${link}</a></p>`,
+              });
+
+           var ret = {message: "Email sent successfully"};
+        }   
+        else
+        {
+            ret = {error:"Email is unvalid or is not associated with a verified account."};
+        }
+
+        console.log(ret);
+        res.status(200).json(ret);
+
+    });
+
+    app.post('/api/reset/:token', async (req, res, next) => {
+        console.log("in resettoeken");
+
+        try
+        {
+            const token = req.params.token;
+            const { firstPassword, secondPassword } = req.body;
+            console.log(firstPassword);
+            var user = await User.findOne({'emailToken' : token});
+            console.log(user);
+            if(!user)
+            {
+                
+                return res.status(404).json({message: 'The token is not vaild. Please contact the admins for support'});
+            }
+            user.emailToken = undefined;
+            if(firstPassword == secondPassword){
+                user.Password = firstPassword;
+                await user.save();
+                console.log("success");
+                return res.status(200).json({message: "Success"});
+            }else{
+                return res.status(500).json({message: "Passwords are not matching"});
+            }
+            
+            
+        } catch(e)
+        {
+            console.error('Error changing password ', e);
+            res.status(500).json({ message: 'Error changing password' });
+        }
+        
     });
 }

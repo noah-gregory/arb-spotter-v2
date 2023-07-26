@@ -11,6 +11,9 @@ import FeedPage from './pages/FeedPage';
 import VerifyPage from './pages/VerifyPage';
 import DeletePage from './pages/DeletePage';
 import EmailPage from './pages/CheckEmailPage';
+import ChangePasswordPage from './pages/ChangePasswordPage';
+import PasswordForgetPage from './pages/PasswordPage';
+import CheckEmailPassPage from './pages/CheckEmailPasswordPage';
 
 function App() {
 	return (
@@ -31,6 +34,12 @@ function App() {
 				<Route path="/delete" index element={<main className="App"><DeletePage /></main>} />
 
 				<Route path="/verify/:token" element={<main className="App"><VerifyPage /></main>} />
+
+				<Route path="/reset" index element={<main className="App"><PasswordForgetPage /></main>} />
+
+				<Route path="/reset/:token" element={<main className="App"><ChangePasswordPage /></main>} />
+
+				<Route path="/passwordcheck" index element={<main className="App"><CheckEmailPassPage /></main>} />
 
 			</Routes>
 		</BrowserRouter>
