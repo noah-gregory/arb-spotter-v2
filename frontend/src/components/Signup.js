@@ -88,7 +88,9 @@ const SignupPage = () => {
     }
 
     const doSignup = async (e) => {
+        setErrMsg('');
         e.preventDefault();
+        console.log("doSignup");
 
         let obj = {firstname:fname,lastname:lname, email:email,login:user,password:pwd};
         let js = JSON.stringify(obj);
@@ -103,7 +105,7 @@ const SignupPage = () => {
             setErrMsg("Invalid Entry");
             return;
         }
-
+            
         try
         {    
             const response = await fetch(buildPath('api/signUp'),
@@ -111,17 +113,15 @@ const SignupPage = () => {
 
             let res = JSON.parse(await response.text());
 
-            if( res.id <= 0 )
-            {
-                setErrMsg('Invalid Signup');
-            }
-            else
-            {
+            if(res.accessToken){
                 let thisUser = {firstName:res.firstName,lastName:res.lastName,id:res.id}
                 localStorage.setItem('user_data', JSON.stringify(thisUser));
 
-                setErrMsg('');
                 window.location.href = '/checkemail';
+            }
+            else
+            {
+                setErrMsg("Email or Username already in use");
             }
         }
         catch(e)
@@ -136,7 +136,7 @@ const SignupPage = () => {
                 <section className="login-section">
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                     <h1>Register</h1>
-                    <form onSubmit={doSignup}>
+                    <form>
                         <label htmlFor="firstname">
                             First name:
                             <FontAwesomeIcon icon={faCheck} className={validFname ? "valid" : "hide"} />
@@ -252,7 +252,7 @@ const SignupPage = () => {
                             Allowed special characters: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
                         </p>
 
-                        <button className="login-button" disabled={!validName || !validPwd || !validEmail || !validFname ? true : false}>Sign Up</button>
+                        <button onClick={doSignup} className="login-button" disabled={!validName || !validPwd || !validEmail || !validFname ? true : false}>Sign Up</button>
                     </form>
                     <p>
                         Already registered?<br />
