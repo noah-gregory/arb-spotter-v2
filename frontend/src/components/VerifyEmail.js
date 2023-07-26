@@ -64,8 +64,8 @@ const VerifyEmail = () => {
   useEffect(() => {
     const fetchVerificationStatus = async () => {
       try {
-        console.log(buildPath(`verify/${token}`));
-        const response = await axios.get(buildPath(`verify/${token}`));
+        console.log(buildPath(`api/verify/${token}`));
+        const response = await axios.get(buildPath(`api/verify/${token}`));
         setVerificationStatus(response.data.message);
       } catch (error) {
         console.error('Error verifying email:', error);

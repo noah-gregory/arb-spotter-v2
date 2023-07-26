@@ -20,7 +20,7 @@ exports.setApp = function ( app, client )
         },
       });
 
-      const app_name = 'arb-navigator-6c93ee5fc546'
+      const app_name = 'arb-navigator-6c93ee5fc546';
       function buildPath(route)
       {
           
@@ -205,19 +205,16 @@ exports.setApp = function ( app, client )
     res.status(200).json(ret);  
            
     });
-    app.get('/verify/:token', async (req, res) => {
+    app.get('/api/verify/:token', async (req, res) => {
         console.log("in verifyToken");
         try
         {
-            
-            
             const token = req.params.token;
            
             const user = await User.findOne({'emailToken' : token});
             console.log(user);
             if(!user)
             {
-                
                 return res.status(404).json({message: 'The token is not vaild. Please contact the admins for support'});
             }
             user.isVerified = true;
