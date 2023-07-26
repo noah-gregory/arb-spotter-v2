@@ -72,7 +72,7 @@
 
 // export default ChangePassword;
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios'; // Import Axios
 
@@ -88,31 +88,42 @@ function buildPath(route) {
 }
 
 const ChangePassword = () => {
+  const errRef = useRef();
   const { token } = useParams();
   const [firstPass, setFirstPass] = useState('');
   const [secondPass, setSecondPass] = useState('');
+  var [errMsg, setError] = useState('');
 
   const handleFormSubmit = async (e) => {
+    setError('');
     e.preventDefault();
 
     const obj = { firstPassword: firstPass, secondPassword: secondPass };
     const js = JSON.stringify(obj);
 
     try {
-        console.log(buildPath(`api/reset/${token}`))
       const response = await axios.post(buildPath(`api/reset/${token}`), js, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
+      console.log(response.data.message);
+      if(response.data.message == "Success"){
+        window.close();
+      }
+      else{
+        setError(response.data.message);
+      }
+      
       // Process the response if needed
     } catch (error) {
-      console.error('Eail:', error);
+      console.error('Fail:', error);
     }
   };
 
   return (
     <section className='login-section'>
+      <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
       <h1>Password Reset</h1>
       <form onSubmit={handleFormSubmit}>
         <label>New Password:</label>

@@ -118,6 +118,7 @@ const PasswordForgetPage = () => {
             } catch (error) {
             console.error('Error Resetting Password:', error);
             }
+            window.location.href = '/login';
     }
 
     return (
@@ -133,7 +134,7 @@ const PasswordForgetPage = () => {
                             onChange={(e) => setEmail(e.target.value)}
                             required
                         />
-                        <button className='login-button'>Reset Password</button>
+                        <button className='login-button'>Send Email</button>
                     </form>
                 </section>
             )

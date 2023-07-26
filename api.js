@@ -385,8 +385,6 @@ exports.setApp = function ( app, client )
 
         try
         {
-            
-            
             const token = req.params.token;
             const { firstPassword, secondPassword } = req.body;
             console.log(firstPassword);
