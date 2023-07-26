@@ -45,9 +45,13 @@ const LoginPage = () => {
     {
         console.log("is axios working?");
         var res = response.data;
-    if (res.error)
+        console.log(res.error);
+    if (res.error == "Login/Password incorrect")
     {
         setErrMsg('User/Password combination incorrect');
+    }else if (res.error === "Email is not verified")
+    {
+        setErrMsg('Email is not verified');
     }
     else
     {
@@ -60,7 +64,6 @@ const LoginPage = () => {
         var userId =ud.userId;
         var firstName = ud.firstName;
         var lastName = ud.lastName;
-        console.log(userId);
 
         var userJs = {firstName:firstName,lastName:lastName, id:userId, username:user};
         localStorage.setItem('user_data', JSON.stringify(userJs));

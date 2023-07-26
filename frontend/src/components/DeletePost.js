@@ -11,9 +11,7 @@ const Feed = () => {
   var [message, setMessage] = useState(false);
 
   useEffect(() => {
-    // Your function code here
     doSearch();
-    // You can call any function you want here.
   }, []);
 
   // var tag1_exists = card.tags[0] != "";

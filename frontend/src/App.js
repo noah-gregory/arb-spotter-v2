@@ -10,6 +10,7 @@ import UploadPage from './pages/UploadPage';
 import FeedPage from './pages/FeedPage';
 import VerifyPage from './pages/VerifyPage';
 import DeletePage from './pages/DeletePage';
+import EmailPage from './pages/CheckEmailPage';
 
 function App() {
 	return (
@@ -24,6 +25,8 @@ function App() {
 				<Route path="/upload" index element={<main className="App"><UploadPage /></main>} />
 
 				<Route path="/feed" index element={<main className="App"><FeedPage /></main>} />
+
+				<Route path="/checkemail" index element={<main className="App"><EmailPage /></main>} />
 
 				<Route path="/delete" index element={<main className="App"><DeletePage /></main>} />
 

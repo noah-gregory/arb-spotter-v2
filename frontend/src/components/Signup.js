@@ -121,7 +121,7 @@ const SignupPage = () => {
                 localStorage.setItem('user_data', JSON.stringify(thisUser));
 
                 setErrMsg('');
-                window.location.href = '/login';
+                window.location.href = '/checkemail';
             }
         }
         catch(e)

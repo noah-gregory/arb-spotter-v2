@@ -35,58 +35,63 @@ exports.setApp = function ( app, client )
       }
     
 
-    app.post('/api/login', async (req, res, next) =>
-    {
-        // incoming: login, password
-        // outgoing: id, firstName, lastName, error
-
-        var error = '';
-        const { login, password } = req.body;
-        console.log(login);
-        console.log(password);
-
-        // const db = client.db();
-        // const results = await
-        // db.collection('Users').find({Login:login,Password:password}).toArray();
-
-        // Attempt to find user in database with provided login and password
-        const results = await User.find({'Login' : login, 'Password' : password, 'isVerified' : true});
-        
-        var id = -1;
-        var fn = '';
-        var ln = '';
-        var ret;
-
-        if( results.length > 0 )
-        {
-            console.log("there was a hit");
-            
-            // Get elements of result
-            fn = results[0].FirstName;
-            ln = results[0].LastName;
-            id = results[0]._id;
-
-            // var str = JSON.stringify(results[0]);
-            try
-            {
-                const token = require("./createJWT.js");
-                console.log(fn);
-                console.log(ln);
-                ret = token.createToken(fn, ln, id);
-            }
-            catch(e)
-            {
-                ret = {error:e.message};
-            }
-        }
-        else
-        {
-            ret = {error:"Login/Password incorrect"};
-        }
-
-        console.log(ret);
-        res.status(200).json(ret);
-    });
+      app.post('/api/login', async (req, res, next) =>
+      {
+          // incoming: login, password
+          // outgoing: id, firstName, lastName, error
+  
+          var error = '';
+          const { login, password } = req.body;
+          console.log(login);
+          console.log(password);
+  
+          // const db = client.db();
+          // const results = await
+          // db.collection('Users').find({Login:login,Password:password}).toArray();
+  
+          // Attempt to find user in database with provided login and password
+          const results = await User.find({'Login' : login, 'Password' : password});
+          
+          var id = -1;
+          var fn = '';
+          var ln = '';
+          var ret;
+          console.log(results[0]);
+          if( (results.length > 0 ) )
+          {
+              if( results[0].isVerified == true){
+              console.log("there was a hit");
+              
+              // Get elements of result
+              fn = results[0].FirstName;
+              ln = results[0].LastName;
+              id = results[0]._id;
+  
+              // var str = JSON.stringify(results[0]);
+              try
+              {
+                  const token = require("./createJWT.js");
+                  console.log(fn);
+                  console.log(ln);
+                  ret = token.createToken(fn, ln, id);
+              }
+              catch(e)
+              {
+                  ret = {error:e.message};
+              }
+          }else if(results[0].isVerified == false)
+          {
+              ret = {error:"Email is not verified"};
+          }
+      }
+          else
+          {
+              ret = {error:"Login/Password incorrect"};
+          }
+  
+          console.log(ret);
+          res.status(200).json(ret);
+      });
 
    
 
