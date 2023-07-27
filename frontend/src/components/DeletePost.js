@@ -41,17 +41,19 @@ const Feed = () => {
 };
 
 const doDelete = async (id) => {
-  // e.preventDefault();
-  let obj = {search:id};
-  let js = JSON.stringify(obj);
+  if(window.confirm("Are you sure you want to delete this post?")){
+    let obj = {search:id};
+    let js = JSON.stringify(obj);
 
     response = await axios.post(buildPath('api/deletePost'), js, {
-        headers: {
-        'Content-Type': 'application/json',
-        }
+          headers: {
+          'Content-Type': 'application/json',
+          }
     });
     doSearch();
   };
+}
+  
 
   const renderCard = (card, index) => {
     var tag1_exists = true;
@@ -100,7 +102,7 @@ const doDelete = async (id) => {
   return (
     <div>
         {message && <h1>Oh no! You have no posts!</h1>}
-        {condition && <div className="grid">{response.map(renderCard)}</div>}
+        {condition && <div className="grid-delete">{response.map(renderCard)}</div>}
     </div>
   )
 };

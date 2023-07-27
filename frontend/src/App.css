@@ -45,7 +45,7 @@
   margin:auto;
   margin-top: 2rem;
   width: 21.5rem;
-  height: 25.5rem;
+  height: 23.8rem;
   flex-shrink: 0;
   border-radius: 1.875rem;
   border: 1px solid #393E46;
@@ -124,24 +124,33 @@
   font-weight: 400;
   color:#393E46;
   }
+
+  .Upload-Button:hover {
+    background-color: #e6e3e0;
+  }
+  
+  .Upload-Button:active {
+    background-color: #dcd7d0;
+  }
+
   .Caption-Text{
-  position: relative;
+  /* position: relative; */
   resize: none;
   left: 0;
   right: 0;
   top: 1;
   bottom: 0;
   margin: auto;
-  margin-top: 1.1rem;
-  margin-bottom: 3rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.7rem;
   background: transparent;
   border: none;
   outline: none;
   display: block;
-  max-lines: 3;
+  max-lines: 4;
   overflow: hidden;
   width: 15rem;
-  height: 2.2rem;
+  height: 4rem;
   flex-direction: column;
   justify-content: center;
   flex-shrink: 0;
@@ -153,27 +162,27 @@
   line-height: 1rem;
   }
   .Tag-Button{
-  position: relative;
-  float: left;
-  left: 0;
-  right: 1;
-  top: 1;
-  bottom: 0;
-  margin: auto;
-  margin-bottom: 1rem;
-  margin-left: 1.6rem;
-  width: 3.6rem;
-  height: 1.5rem;
-  flex-shrink: 0;
-  border-radius: 30px;
-  border: 1px solid #393E46;
-  background: #F2E7D5;
-  color: #393E46;
-  text-align: center;
-  font-family: 'Nunito', sans-serif;
-  font-size: 0.675rem;
-  font-style: italic;
-  font-weight: 700;
+    position: relative;
+    float: left;
+    left: 0;
+    right: 1;
+    top: 1;
+    bottom: 0;
+    margin: auto;
+    margin-bottom: 1rem;
+    margin-left: 1.6rem;
+    width: 3.6rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+    border-radius: 30px;
+    border: 1px solid #393E46;
+    background: #F2E7D5;
+    color: #393E46;
+    text-align: center;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.675rem;
+    font-style: italic;
+    font-weight: 700;
   }
   .location-button{
   position: absolute;
@@ -214,6 +223,15 @@
   background: #393E46;
   color: #F2E7D5;
   }
+
+  .finalize-button:hover{
+    background: #2f343b;
+  }
+
+  .finalize-button:active{
+    background: #23272c;
+  }
+  
   .Image-Icon{
   position: relative;
   left: 0;
@@ -266,11 +284,41 @@ body {
   min-height: 100vh; 
   padding: 1rem 0.5rem;
 }
+
+/* .grid-signup{
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+} */
+
+.logo{
+  right:0;
+  top:0;
+  width: 20vh;
+  min-width: 60px;
+  max-width: 200px;
+  height: 20vh;
+  min-height: 60px;
+  max-height: 200px;
+  position: absolute;
+  /* margin-right:5vw;
+  margin-left: 10px; */
+}
+
+.wide{
+  width: 100vw;
+}
+
 .login-section {
+    /* position:relative; */
     border-radius: 25px;
+    left:50%;
+    right:50%;
     width: 100%;
     height: 100%;
-    max-width: 420px;
+    max-width: 320px;
     min-height: 400px;
     display: flex;
     text-align: left;
@@ -279,6 +327,13 @@ body {
     padding: 1rem;
     background-color:#393E46;
 }
+
+.login__box{
+  height:100%;
+  width: 100%;
+  position:relative;
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -313,6 +368,14 @@ label,
   background-color: #F2E7D5;
   cursor: pointer;
   padding: 0.5rem;
+}
+
+.login-button:hover {
+  background-color: #d1c5b3;
+}
+
+.login-button:active {
+  background-color: #b5a898;
 }
 
 .instructions {
@@ -374,6 +437,10 @@ label,
   border-width:0px 0px 1px 0px;
   border-style:solid;
   border-color:#393E46;
+}
+
+.caption__box{
+  font-size: 19px;
 }
 
 .post-image {
@@ -441,7 +508,7 @@ label,
 }
 
 .text__box{
-  padding-top: 6px;
+  padding-top: 0px;
   padding-left: 24px;
   padding-right: 24px;
   bottom: 5px;
@@ -455,6 +522,15 @@ label,
 .grid {
   /* min-height: 100%; */
   margin-top: 3.3rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.grid-delete {
+  /* min-height: 100%; */
+  margin-top: 1.4rem;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -483,14 +559,24 @@ label,
   display:flex;
   position:absolute;
   justify-content: center;
+  height:46px;
   top: 2.6rem;
   left: 20%;
   right:20%;
 }
 
 .search__button{
-  border-radius: 30px;
-  width:46px;
+  background-color: #F7F7F7;
+  border-radius: 14px;
+  width:48px;
+}
+
+.search__button:hover{
+  background-color: #ececec;
+}
+
+.search__button:active{
+  background-color: #dbdbdb;
 }
 
 /*end of search bar*/
@@ -534,7 +620,7 @@ label,
   padding: .25rem;
 }
 
-.nav li.active {
+.nav li:active {
   background-color: #555;
 }
 

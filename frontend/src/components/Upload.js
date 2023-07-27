@@ -9,6 +9,9 @@ const UploadPage = () => {
     const [tag2, setInputTag2] = useState('');
     const [tag3, setInputTag3] = useState('');
     const [caption, setCaption] = useState('');
+    var [tag1Filled, setTag1Filled] = useState(false);
+    var [tag2Filled, setTag2Filled] = useState(false);
+    var [final, setFinal] = useState(false);
 
     const app_name = 'arb-navigator-6c93ee5fc546'
     function buildPath(route)
@@ -66,6 +69,22 @@ const UploadPage = () => {
 
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
+        if(e.target.files[0] === undefined){
+            setFinal(false);
+        }
+        else{
+            setFinal(true);
+        }
+    };
+
+    const handleTag1Change = (e) => {
+        setInputTag1(e.target.value);
+        setTag1Filled(true);
+    };
+
+    const handleTag2Change = (e) => {
+        setInputTag2(e.target.value);
+        setTag2Filled(true);
     };
 
     // const handleSubmitImage = async (e) => {
@@ -115,6 +134,7 @@ const UploadPage = () => {
                     },
                 });
                 console.log('Uploaded post successfully:', response.data);
+                window.location.href = '/delete';
         } catch (error) {
             console.error('Error uploading post:', error);
         }
@@ -147,12 +167,12 @@ const UploadPage = () => {
                 <label for="file-upload" class="Upload-Button">Choose Image</label>
                 <input type="file" id='file-upload' onChange={handleFileChange}/>
             </section>
-            <textarea contentEditable='true'className='Caption-Text' id='CaptionText' onChange={e => setCaption(e.target.value)} required type='text'maxLength={50} placeholder="Put Your Caption Here!
-            (Max 50 characters)"></textarea>
-            <input maxLength='9'className='Tag-Button'placeholder="Add Tag"value={tag1}onChange={e => setInputTag1(e.target.value)} required></input>
-            <input maxLength='9'className='Tag-Button'placeholder="Add Tag"value={tag2}onChange={e => setInputTag2(e.target.value)}></input>
-            <input maxLength='9'className='Tag-Button'placeholder="Add Tag"value={tag3}onChange={e => setInputTag3(e.target.value)}></input>
-            <button type="button"className="finalize-button"onClick={handlePost}>Upload Post</button>
+            <textarea contentEditable='true'className='Caption-Text' id='CaptionText' onChange={e => setCaption(e.target.value)} type='text'maxLength={50} placeholder="Put Your Caption Here!
+            (Max 60 characters)"></textarea>
+            <input maxLength='9'className='Tag-Button'placeholder="Add Tag"value={tag1}onChange={(e) => handleTag1Change(e)}></input>
+            {tag1Filled && <input maxLength='9'className='Tag-Button'placeholder="Add Tag"value={tag2}onChange={(e) => handleTag2Change(e)}></input>}
+            {tag2Filled && <input maxLength='9'className='Tag-Button'placeholder="Add Tag"value={tag3}onChange={e => setInputTag3(e.target.value)}></input>}
+            {final && <button type="button"className="finalize-button"onClick={handlePost}>Upload Post</button>}
             </section>
         )
     )

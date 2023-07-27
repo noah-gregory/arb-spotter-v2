@@ -81,6 +81,7 @@ const Feed = () => {
             className="search__input"
             type="text"
             id="search"
+            placeholder="Search tag/user"
             onChange={(e) => setSearch(e.target.value)}
         />
         <button className="search__button" onClick={doSearch}>
