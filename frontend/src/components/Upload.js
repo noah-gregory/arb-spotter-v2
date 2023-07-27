@@ -9,6 +9,9 @@ const UploadPage = () => {
     const [tag2, setInputTag2] = useState('');
     const [tag3, setInputTag3] = useState('');
     const [caption, setCaption] = useState('');
+    var [tag1Filled, setTag1Filled] = useState(false);
+    var [tag2Filled, setTag2Filled] = useState(false);
+    var [final, setFinal] = useState(false);
 
     const app_name = 'arb-navigator-6c93ee5fc546'
     function buildPath(route)
@@ -50,9 +53,38 @@ const UploadPage = () => {
     //   }
 
     const [file, setFile] = useState(null);
+    const [preview, setPreview] = useState();
+    useEffect(() => {
+        if (!file) {
+            setPreview(undefined)
+            return
+        }
+
+        const objectUrl = URL.createObjectURL(file)
+        setPreview(objectUrl)
+
+        // free memory when ever this component is unmounted
+        return () => URL.revokeObjectURL(objectUrl)
+    }, [file])
 
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
+        if(e.target.files[0] === undefined){
+            setFinal(false);
+        }
+        else{
+            setFinal(true);
+        }
+    };
+
+    const handleTag1Change = (e) => {
+        setInputTag1(e.target.value);
+        setTag1Filled(true);
+    };
+
+    const handleTag2Change = (e) => {
+        setInputTag2(e.target.value);
+        setTag2Filled(true);
     };
 
     // const handleSubmitImage = async (e) => {
@@ -102,6 +134,7 @@ const UploadPage = () => {
                     },
                 });
                 console.log('Uploaded post successfully:', response.data);
+                window.location.href = '/delete';
         } catch (error) {
             console.error('Error uploading post:', error);
         }
@@ -130,14 +163,16 @@ const UploadPage = () => {
             <section className='Upload-Holder'>
             <section className='Image-Holder'>
                 <i className='Image-Icon'><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M512 144v288c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V144c0-26.5 21.5-48 48-48h88l12.3-32.9c7-18.7 24.9-31.1 44.9-31.1h125.5c20 0 37.9 12.4 44.9 31.1L376 96h88c26.5 0 48 21.5 48 48zM376 288c0-66.2-53.8-120-120-120s-120 53.8-120 120 53.8 120 120 120 120-53.8 120-120zm-32 0c0 48.5-39.5 88-88 88s-88-39.5-88-88 39.5-88 88-88 88 39.5 88 88z"/></svg></i>
-                <input type="file" onChange={handleFileChange}/>
+                {file && <img className='Image-Preview'src={preview} />}
+                <label for="file-upload" class="Upload-Button">Choose Image</label>
+                <input type="file" id='file-upload' onChange={handleFileChange}/>
             </section>
-            <textarea contentEditable='true'className='Caption-Text' id='CaptionText' onChange={e => setCaption(e.target.value)} required type='text'maxLength={50} placeholder="Put Your Caption Here!
+            <textarea contentEditable='true'className='Caption-Text' id='CaptionText' onChange={e => setCaption(e.target.value)} type='text'maxLength={50} placeholder="Put Your Caption Here!
             (Max 50 characters)"></textarea>
-            <input maxLength='9'className='Tag-Button'placeholder="Add Tag"value={tag1}onChange={e => setInputTag1(e.target.value)} required></input>
-            <input maxLength='9'className='Tag-Button'placeholder="Add Tag"value={tag2}onChange={e => setInputTag2(e.target.value)}></input>
-            <input maxLength='9'className='Tag-Button'placeholder="Add Tag"value={tag3}onChange={e => setInputTag3(e.target.value)}></input>
-            <button type="button"className="finalize-button"onClick={handlePost}>Upload Post</button>
+            <input maxLength={8}className='Tag-Button'placeholder="Add Tag"value={tag1}onChange={(e) => handleTag1Change(e)}></input>
+            {tag1Filled && <input maxLength={8} className='Tag-Button'placeholder="Add Tag"value={tag2}onChange={(e) => handleTag2Change(e)}></input>}
+            {tag2Filled && <input maxLength={8} className='Tag-Button'placeholder="Add Tag"value={tag3}onChange={e => setInputTag3(e.target.value)}></input>}
+            {final && <button type="button"className="finalize-button"onClick={handlePost}>Upload Post</button>}
             </section>
         )
     )
