@@ -168,7 +168,7 @@ const UploadPage = () => {
                 <input type="file" id='file-upload' onChange={handleFileChange}/>
             </section>
             <textarea contentEditable='true'className='Caption-Text' id='CaptionText' onChange={e => setCaption(e.target.value)} type='text'maxLength={50} placeholder="Put Your Caption Here!
-            (Max 60 characters)"></textarea>
+            (Max 50 characters)"></textarea>
             <input maxLength='9'className='Tag-Button'placeholder="Add Tag"value={tag1}onChange={(e) => handleTag1Change(e)}></input>
             {tag1Filled && <input maxLength='9'className='Tag-Button'placeholder="Add Tag"value={tag2}onChange={(e) => handleTag2Change(e)}></input>}
             {tag2Filled && <input maxLength='9'className='Tag-Button'placeholder="Add Tag"value={tag3}onChange={e => setInputTag3(e.target.value)}></input>}
