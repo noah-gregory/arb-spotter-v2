@@ -42,8 +42,8 @@ exports.setApp = function ( app, client )
   
           var error = '';
           const { login, password } = req.body;
-          console.log(login);
-          console.log(password);
+        //   console.log(login);
+        //   console.log(password);
   
           // const db = client.db();
           // const results = await
@@ -56,11 +56,11 @@ exports.setApp = function ( app, client )
           var fn = '';
           var ln = '';
           var ret;
-          console.log(results[0]);
+        //   console.log(results[0]);
           if( (results.length > 0 ) )
           {
               if( results[0].isVerified == true){
-              console.log("there was a hit");
+            //   console.log("there was a hit");
               
               // Get elements of result
               fn = results[0].FirstName;
@@ -71,8 +71,8 @@ exports.setApp = function ( app, client )
               try
               {
                   const token = require("./createJWT.js");
-                  console.log(fn);
-                  console.log(ln);
+                //   console.log(fn);
+                //   console.log(ln);
                   ret = token.createToken(fn, ln, id);
               }
               catch(e)
@@ -89,7 +89,7 @@ exports.setApp = function ( app, client )
               ret = {error:"Login/Password incorrect"};
           }
   
-          console.log(ret);
+        //   console.log(ret);
           res.status(200).json(ret);
       });
 

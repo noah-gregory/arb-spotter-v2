@@ -2,11 +2,18 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
-const port = process.env.PORT || 5000;
+var port;
 const app = express();
 // require('./database');
-app.set('port', (process.env.PORT || 5000));
 
+console.log(process.env.NODE_ENV);
+if(process.env.NODE_ENV == 'test'){
+
+    app.set('port', (process.env.PORT || 5001));
+}else {
+     port = process.env.PORT || 5000;
+}
+console.log(port);
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -39,3 +46,5 @@ if (process.env.NODE_ENV === 'production'){
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
 });
+
+module.exports = app; // Export the Express app
